@@ -1,0 +1,204 @@
+[차가운프로젝트에 피드백앱 생성하기]
+-- 참고 자료
+http://pythonstudy.xyz/python/article/315-%EC%83%98%ED%94%8C-Feedback-App
+
+-- 사전 준비 환경
+epintos.com(222.112.40.134)에 접속할 User와 Port(16022)가 만들어져 있어야 한다.
+PC상에 vscode가 설치되어 위의 서버에 접속할 수 있어야 한다.
+사용하고 있는 유저(ysk002)에 chagaun_prj 프로젝트 소스가 다운로드 되어 로컬상에서 실행이 되고 있어야 한다
+
+-- vscode를 통해 우분투에 접속한다(HostName 222.112.40.134, User ysk002 Port 16022
+-- chagaun_prj 프로젝트 폴더를 오픈 한 후 가상환경을 연결해 놓는다.
+
+-- feedback 앱을 만든다.
+(vnv_ysk002)$ python manage.py startapp feedback
+
+-- chagaun_prj/chagaun_prj/settings.py에 feedback 앱을 등록해 놓는다
+:
+    'feedback.apps.FeedbackConfig',
+
+-- feedback 폴더에 templates, static 하위 폴더를 만들어 놓는다
+(vnv_ysk002) chagaun_prj$ mkdir templates
+(vnv_ysk002) chagaun_prj$ cd templates
+(vnv_ysk002) templates$ mkdir feedback
+
+(vnv_ysk002) chagaun_prj$ mkdir static
+(vnv_ysk002) chagaun_prj$ cd static
+(vnv_ysk002) static$ mkdir feedback
+
+-- Bootstrap Studio를 통해 웹페이지를 만든다
+-- 템플릿 파일 : feedback_list.html, feedback_detail.html
+-- Bootstrap 5.1 Crud-Table 컴포넌트 활용
+-- 저장 버튼을 눌러 디자인 파일을 feedback.bsdesign로 저장
+-- Export 버튼을 눌러 html 파일과 assets 폴더를 생성해 낸다.
+
+-- 위에서 익스포트된 html 파일(feedback_list.html, feedback_detail.html)을 
+chagaun_prj/feedback/template/feedback에 업로드한다
+
+-- 위에서 익스포트된 assets 폴더(feedback_list.html, feedback_detail.html)를 
+chagaun_prj/feedback/static/feedback에 업로드한다
+
+-- html 파일을 가지고 장고 템플릿 파일로 변환한다
+python ./utils/generate_template.py --app_name=feedback --is_bss=True
+app_name : 앱이름
+is_bss : Bootstrap으로 만들어진 html 파일 여부
+=> feedback_list.html.html, feedback_detail.html.html 이라는 템플릿 파일이 만들어진다
+=>원본 html 파일(feedback_list.html)과 템플릿 파일(feedback_list.html.html)을 열어 달라진 점을 확인해 본다
+
+-- chagaun_prj/chagaun_prj/urls.py에 feedback route 경로를 등록해 놓는다
+:
+    path('feedback/', include('feedback.urls', namespace="feedback")),
+
+-- chagaun_prj/chagaun_prj/feedback/urls.py 파일을 생성하여 feedback앱의 세부 경로를 등록해 놓는다.
+from django.urls import path
+from feedback import views
+
+app_name = "feedback"
+ 
+urlpatterns = [
+    path('list/', views.list, name='list'),
+    path('create', views.create, name='create'),
+    path('edit/(?P<id>\d+)/$', views.edit, name='edit')
+]
+
+-- chagaun_prj/chagaun_prj/feedback/models.py 파일을 열어 다음과 같이 수정해 놓는다
+from django.db import models
+ 
+class Feedback(models.Model):
+     name = models.CharField(max_length=100)
+     email = models.EmailField()
+     comment = models.TextField(null=True)
+     createDate = models.DateTimeField(auto_now_add=True)
+
+-- chagaun_prj/chagaun_prj/feedback/forms.py 파일을 생성하여 다음과 같이 등록해 놓는다
+from django.forms import ModelForm
+from .models import Feedback
+ 
+class FeedbackForm(ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['id', 'name','email','comment']
+
+-- 이제 만들어진 ModelClass(Feedback)을 MySQL 테이터베이스에 Migrate하여 스키마(테이블 등)이 자동으로 생성되도록 한다
+--프로젝트 홈 폴더(manage.py파일이 있는 폴더가 프로젝트 홈 폴더임)에 있는지 확인
+(vnv_ysk002) chagaun_prj$ python manage.py makemigrations feedback
+(vnv_ysk002) chagaun_prj$ python manage.py migrate feedback
+=> 그러면 feedback_feedback이라는 테이블이 MySQL ysk_database에 자동으로 생성이 됨다
+
+-- chagaun_prj/chagaun_prj/feedback/views.py 파일을 열어 다음과 같이 수정해 놓는다
+from django.shortcuts import render, redirect
+from .models import *
+from .forms import FeedbackForm
+ 
+def list(request):
+    feedbacks = Feedback.objects.all()
+    return render(request, 'feedbacklist.html', {'feedbacks': feedbacks})
+ 
+def create(request):
+    if request.method=='POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/feedback/list')
+    else:
+        form = FeedbackForm()
+ 
+    return render(request, 'feedback.html', {'form': form})
+ 
+def edit(request, id):
+    fb = Feedback.objects.get(pk=id)
+    if request.method=='POST':
+        form = FeedbackForm(request.POST, instance=fb)
+        if form.is_valid():
+            form.save()
+        return redirect('/feedback/list')
+    else:
+        form = FeedbackForm(instance=fb)
+ 
+    return render(request, 'feedback.html', {'form': form})
+
+-- 개발용 웹서버를 실행하여 feedback앱을 열어본다
+(vnv_ysk002) chagaun_prj$ python manage.py runserver 8001
+=>Displayed된 127.0.0.1:8001을 Ctrl+클릭하면 부라우저에 chagaun 홈 페이지 뜬다
+
+-- 주소창에서 127.0.0.1:8001/feedback/list/ 엔터를 하여 정상적으로 feedback 페이지가 뜨는지 확인한다.
+
+-- feedback/templates/feedback/feedback_list.html.html을 열어 다음과 같이 수정해 놓는다
+-- 추가 버튼에 대한 링크를 달아 놓는다
+<a id="feedback_add" class="feedback_add" href="#">추가</a>
+<a id="feedback_add" class="feedback_add" href="{% url 'feedback:create' %}">추가</a>
+=>url 'feedback:create'은 urls.py의 namespace=feedback와 feedback/urls.py의 name=create 으로 되어 있는 경로에 있는 views.create를 호출하라는 의미임
+
+-- feedback 목록을 출력하는 부분을 구현한다
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>E-mail</th>
+                                    <th>Comment</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-truncate" style="max-width: 200px;">Jmeno Prijmení</td>
+                                    <td class="text-truncate" style="max-width: 200px;">email.prijmeni@sssssssssssssssgmail.com</td>
+                                    <td>Superior</td>
+                                    <td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye-fill fs-5 text-primary">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                                        </svg></td>
+                                </tr>
+                            </tbody>
+=>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>E-mail</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in feedbacks %}
+                                <tr>
+                                    <td class="text-truncate" style="max-width: 200px;"><a href="{% url 'feedback:edit' id=item.id %}">{{item.id}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{item.name}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{item.email}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{item.comment}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+-- feedback/templates/feedback/feedback_detail.html.html을 열어 다음과 같이 수정해 놓는다
+-- 추가 버튼에 대한 링크를 달아 놓는다
+<a id="feedback_add" class="feedback_add" href="#">추가</a>
+<a id="feedback_add" class="feedback_add" href="{% url 'feedback:create' %}">추가</a>
+=>url 'feedback:create'은 urls.py의 namespace=feedback와 feedback/urls.py의 name=create 으로 되어 있는 경로에 있는 views.create를 호출하라는 의미임
+
+-- feedback 목록을 출력하는 부분을 구현한다
+        <form id="feedback_edit_form" method="post">
+            <h2 class="text-center">Feedback</h2>
+            <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+            <div class="mb-3"><input class="form-control is-invalid" type="email" name="email" placeholder="Email"><small class="form-text text-danger">Please enter a correct email address.</small></div>
+            <div class="mb-3"><textarea class="form-control" name="message" placeholder="Message" rows="14"></textarea></div>
+            <div class="mb-3" style="text-align: center;">
+			<button class="btn btn-primary" type="submit" style="padding-right: 32px;margin-right: 8px;margin-left: 8px;">저장</button>
+			<button class="btn btn-primary" type="button" style="margin-right: 8px;margin-left: 8px;" onclick="goBack()">돌아가기</button></div>
+        </form>
+=>
+        <form id="feedback_edit_form" method="post">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.as_table }}
+            </table>
+            <div class="mb-3" style="text-align: center;">
+			<button class="btn btn-primary" type="submit" style="padding-right: 32px;margin-right: 8px;margin-left: 8px;">저장</button>
+			<button class="btn btn-primary" type="button" style="margin-right: 8px;margin-left: 8px;"><a href="{% url 'feedback:list' %}">돌아가기</a></button></div>
+        </form>
+
+-- 다시 127.0.0.1:8001/feedback/list/ 엔터를 하여 정상적으로 feedback 페이지가 뜨는지 확인한다.
+-- 추가 버튼을 클릭하여 신규 피드백을 생성한다.
+-- 출력된 목록을 선택하여 수정해 본다.
+
+끝
+

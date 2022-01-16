@@ -1,0 +1,252 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap');
+
+
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 100;
+ src: local('NotoSans Light'), local('NotoSans-Light'), url(../css/font/NotoSans-Light.woff) format('woff');
+}
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 200;
+ src: local('NotoSans DemiLight'), local('NotoSans-DemiLight'), url(../css/font/NotoSans-DemiLight.woff) format('woff');
+}
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 300;
+ src: local('NotoSans Regular'), local('NotoSans-Regular'), url(../css/font/NotoSans-Regular.woff) format('woff'),
+      local('NotoSans Regular'), local('NotoSans-Regular'), url(../css/font/NotoSans-Regular.woff2) format('woff2');
+}
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 400;
+ src: local('NotoSans Medium'), local('NotoSans-Medium'), url(../css/font/NotoSans-Medium.woff) format('woff');
+}
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 500;
+ src: local('NotoSans Bold'), local('NotoSans-Bold'), url(../css/font/NotoSans-Bold.woff) format('woff'),
+      local('NotoSans Bold'), local('NotoSans-Bold'), url(../css/font/NotoSans-Bold.woff2) format('woff2');
+}
+@font-face {
+ font-family: 'NotoSans';
+ font-style: normal;
+ font-weight: 600;
+ src: local('NotoSans Black'), local('NotoSans-Black'), url(../css/font/NotoSans-Black.woff) format('woff');
+}
+
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(../css/font/RobotoCondensed-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(../css/font/RobotoCondensed-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(../css/font/RobotoCondensed-Bold.woff)
+}
+
+
+
+/*common*/
+
+* { margin: 0; padding: 0; /*box-sizing: border-box;*/ -webkit-touch-callout: none; }
+html { -webkit-font-size-adjust: none;overflow-y: scroll; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: keep-all }
+html, body { height: 100%; margin: 0; padding: 0; color: #343434; font-size: 16px; letter-spacing:-0.5px; font-family:'Play', 'NotoSans', '맑은고딕', Malgun Gothic, sans-serif,'Sans-serif', 돋움, 'dotum'; min-width:320px ; line-height:normal;line-height:1.5em; font-weight:300; text-rendering: optimizeLegibility;}
+
+::selection { background: #666; color: #fff; }
+
+@media screen and (max-width:1000px){
+html, body { font-size: 15px; letter-spacing:-0.8px }
+}
+@media screen and (max-width:640px){
+html, body { font-size: 14px; line-height:23px;}
+}
+
+
+
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, abbr, address, cite, em, img, strong, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, audio, video { margin: 0; padding: 0; border: 0; vertical-align:baseline }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size:100% ; line-height:normal  }
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote { margin: 0; padding: 0 }
+input, textarea, select {   color: inherit; font-family:inherit }
+
+select{-webkit-border-radius:0; /* -webkit-appearance:none;아이폰에서 셀렉트 아이콘 안나와서 주석처리*/}
+input[type=text], input[type=password]{ border:1px solid #CCC; height:33px; line-height:33px;-webkit-border-radius:0; -webkit-appearance:none; }
+input[type=submit]{-webkit-border-radius:0; -webkit-appearance:none;}
+input[type=image]{ height:auto; border:0;   }
+input[type=file]{ border:0; background:none;  }
+textarea{ overflow-y:auto;  border:1px solid #CCC; }
+select { height: 30px ; margin: 0; padding: 0; border: 1px solid #ccc; box-sizing: border-box; }
+input[type=checkbox], input[type=radio]{ width:14px;height:14px; vertical-align:middle; margin-top:-2px; }
+
+
+label { cursor: pointer }
+label, select, input, button { /*vertical-align: middle ;*/ vertical-align:baseline}
+table { border-collapse: collapse; border-spacing: 0 }
+img { max-width: 100%; border: 0; -webkit-tap-highlight-color: rgba(0,0,0,0) ; -ms-interpolation-mode: bicubic; /*vertical-align: top;*/ vertical-align:middle}
+ol, ul { list-style: none }
+ol, ul, li { list-style: none }
+img, fieldset { border: 0 none }
+
+a { color:inherit }
+a:link, a:visited { text-decoration: none }
+a:hover, a:active { text-decoration: none }
+
+blockquote, q { quotes: none }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none }
+em, address { font-style: normal; }
+hr { display: none; clear: both;height: 0; }
+legend, caption { visibility: hidden; overflow: hidden; position: absolute; width: 0; height: 0; margin: 0; padding: 0; line-height: 0 }
+
+strong, table th{ font-weight:normal; font-weight:400 !important}
+
+
+
+/*html5 구 버전 적용 위한 소스*/
+[hidden], area, base, basefont, command, datalist, head, input[type=hidden], link, menu[type=context], meta, noembed, noframes, param, script, source, style, track, title { /* case-insensitive */
+ display: none;
+}
+address, article, aside, blockquote, body, center, dd, dir, div, dl, dt, figure, figcaption, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, legend, listing, menu, nav, ol, p, plaintext, pre, section, summary, ul, xmp { display: block; }
+table { display: table; }
+caption { display: table-caption; }
+colgroup { display: table-column-group; }
+col { display: table-column; }
+thead { display: table-header-group; }
+tbody { display: table-row-group; }
+tfoot { display: table-footer-group; }
+tr { display: table-row; }
+td, th { display: table-cell; }
+li { display: list-item; }
+ruby { display: ruby; }
+rt { display: ruby-text; display: inline; }
+
+
+
+/*마진 및 정렬*/
+
+.text_c {text-align:center;}
+.text_l {text-align:left;}
+.text_r {text-align:right;}
+.float_r {float:right;}
+.float_l {float:left;}
+
+.clear {clear:both !important;}
+
+.pat0{ padding-top:0 !important;}
+.pab0{ padding-bottom:0 !important;}
+.mat0{ margin-top:0 !important;}
+.mab0{ margin-bottom:0 !important;}
+
+.mat5{ margin-top:5px !important;}
+.mar5{ margin-right:5px !important;}
+.mab5{ margin-bottom:5px !important;}
+.mal5{ margin-left:5px !important;}
+
+.mat10{ margin-top:10px !important;}
+.mar10{ margin-right:10px !important;}
+.mab10{ margin-bottom:10px !important;}
+.mal10{ margin-left:10px !important;}
+
+.mat20{ margin-top:20px !important;}
+.mar20{ margin-right:20px !important;}
+.mab20{ margin-bottom:20px !important;}
+.mal20{ margin-left:20px !important;}
+
+.mat30{ margin-top:30px !important;}
+.mar30{ margin-right:30px !important;}
+.mab30{ margin-bottom:30px !important;}
+.mal30{ margin-left:30px !important;}
+
+.mat40{ margin-top:40px !important;}
+.mar40{ margin-right:40px !important;}
+.mab40{ margin-bottom:40px !important;}
+.mal40{ margin-left:40px !important;}
+
+.mat50{ margin-top:50px !important;}
+.mar50{ margin-right:50px !important;}
+.mab50{ margin-bottom:50px !important;}
+.mal50{ margin-left:50px !important;}
+
+.mat60{ margin-top:60px !important;}
+.mar60{ margin-right:60px !important;}
+.mab60{ margin-bottom:60px !important;}
+.mal60{ margin-left:60px !important;}
+
+.mat70{ margin-top:70px !important}
+.mar70{ margin-right:70px !important}
+.mab70{ margin-bottom:70px !important}
+.mal70{ margin-left:70px !important}
+
+.mat80{ margin-top:80px !important}
+.mar80{ margin-right:80px !important}
+.mab80{ margin-bottom:80px !important}
+.mal80{ margin-left:80px !important}
+
+.mat90{ margin-top:90px !important}
+.mar90{ margin-right:90px !important}
+.mab90{ margin-bottom:90px !important}
+.mal90{ margin-left:90px !important}
+
+.mat100{ margin-top:100px !important}
+.mar100{ margin-right:100px !important}
+.mab100{ margin-bottom:100px !important}
+.mal100{ margin-left:100px !important}
+
+@media screen and (max-width:1000px){
+.mat20{ margin-top:10px !important}
+.mab20{ margin-bottom:10px !important}
+
+.mat30{ margin-top:15px !important}
+.mab30{ margin-bottom:15px !important}
+
+.mat40{ margin-top:20px !important}
+.mab40{ margin-bottom:20px !important}
+
+.mat50{ margin-top:20px !important}
+.mab50{ margin-bottom:20px !important}
+
+.mat60{ margin-top:30px !important}
+.mab60{ margin-bottom:30px !important}
+
+.mat70{ margin-top:35px !important}
+.mab70{ margin-bottom:35px !important}
+
+.mat80{ margin-top:40px !important}
+.mab80{ margin-bottom:40px !important}
+
+.mat90{ margin-top:45px !important}
+.mab90{ margin-bottom:45px !important}
+
+.mat100{ margin-top:50px !important}
+.mab100{ margin-bottom:50px !important}
+}
+
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+
+
+::-webkit-input-placeholder { /* WebKit browsers */ color: #a5a5a5 !important;  }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: #a5a5a5!important; opacity: 1; }
+::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #a5a5a5!important; opacity: 1;  }
+:-ms-input-placeholder { /* Internet Explorer 10+ */ color: #a5a5a5!important;}

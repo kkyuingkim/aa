@@ -1,0 +1,24 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+{% include "include/sub_nav.html" %}
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		{% include "include/title.html" %}
+		<div class="sub_contents">
+
+			{% include "layout/recipe.html" %}
+			{% include "layout/pagination.html" %}
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html style="font-family: 'Noto Sans KR', sans-serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cardo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&amp;display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+</head>
+
+<body style="font-family: 'Noto Sans KR', sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-lg bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#"><img src="../assets/img/클리퍼%20로고1.png" style="width: 150px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;text-decoration: underline;font-weight: bold;">PORTER</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Voicer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Liner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Trailer</a></li>
+                    <li class="nav-item"><span class="fa-stack"><i class="fas fa-user fa-stack-2x"></i></span></li>
+                    <li class="nav-item"><span class="fa-stack"><i class="fas fa-shopping-basket fa-stack-2x"></i></span></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;text-decoration:  underline;">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page landing-page">
+        <section class="clean-block clean-info dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-start" style="font-weight: bold;color: #fb5607;">CLIPLINER&nbsp;<i class="fa fa-question-circle-o"></i></h2>
+                    <p></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1" style="margin-bottom: 10px;">
+                        <div class="card m-auto" style="max-width: 850px;color: var(--bs-blue);">
+                            <div class="card-body" style="background: rgba(255,255,255,0.27);">
+                                <form class="d-flex align-items-center"><i class="fas fa-search d-none d-sm-block h4 text-body m-0"></i><input class="form-control flex-shrink-1 form-control-borderless" type="search" placeholder="원하는 시리즈 정보를 검색해주세요. :  키워드, 채널, 유튜브URL" name="searchbar" style="font-family: 'Noto Sans KR', sans-serif;height: 49px;margin-right: 10px;margin-left: 10px;"><button class="btn btn-dark btn-lg" type="submit" style="width: 100.4844px;font-family: 'Noto Sans KR', sans-serif;">검색</button></form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" id="TableSorterCard">
+                            <div class="row table-topper align-items-center" style="border-bottom-color: var(--bs-table-active-bg);">
+                                <div class="col-4 text-start" style="margin: 0px;padding: 5px 15px;"></div>
+                                <div class="col-4 text-center" style="margin: 0px;padding: 5px 10px;"></div>
+                                <div class="col-4 text-end" style="margin: 0px;padding: 5px 10px;"><button class="btn btn-dark btn-sm reset" type="button" style="padding: 5px;margin: 2px;padding-right: 20ㅔ;padding-bottom: 6px;margin-right: 20px;">리셋필터</button></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <table class="table table tablesorter" id="ipi-table">
+                                            <thead class="thead-dark">
+                                                <tr style="border-color: var(--bs-table-striped-color);"></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">채널</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;">유튜브&nbsp; &nbsp;네이버TV&nbsp; &nbsp;카카오티비&nbsp; &nbsp;전체</td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">카테고리</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;"><select name="영화/애니메이션" value="영화/애니메이션">
+                                                            <option value="undefined" selected="">전체</option>
+                                                            <option value="12">라이프스타일</option>
+                                                            <option value="13">음악/댄스</option>
+                                                            <option value="14">뷰티/패션</option>
+                                                            <option value="14">영화/애니메이션</option>
+                                                        </select></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">국가/지역</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;"><select name="영화/애니메이션" value="영화/애니메이션" style="margin-right: 20px;">
+                                                            <option value="0" selected="">전체지역</option>
+                                                            <option value="1">한국</option>
+                                                            <option value="2">중국</option>
+                                                            <option value="3">일본</option>
+                                                            <option value="4">미국</option>
+                                                        </select><select name="영화/애니메이션" value="영화/애니메이션" style="margin-left: 0px;padding-left: 0px;">
+                                                            <option value="undefined" selected="">모든언어</option>
+                                                            <option value="12">한국어</option>
+                                                            <option value="13">중국어</option>
+                                                            <option value="14">일본어</option>
+                                                            <option value="14">영어</option>
+                                                        </select></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">구독자</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;">1만~5만&nbsp; &nbsp; &nbsp;5만-10만&nbsp; &nbsp; &nbsp;10만-20만&nbsp; &nbsp; 20만-50만&nbsp; &nbsp; 50만-100만&nbsp; &nbsp; 100만+<br></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">마지막 업로드</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;">지난 7일 이내&nbsp;&nbsp;지난 30일&nbsp; 지난 90일&nbsp; 전체<br></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">마지막 업로드일</td>
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">&nbsp;&nbsp;<div class="form-group mb-3" style="width: 245px;">
+                                                            <div class="input-group mb-4"><span class="input-group-text"><i class="fa fa-calendar-check-o"></i></span><input class="form-control" type="text" id="datePicker"></div>
+                                                        </div><button class="btn btn-secondary" type="button" style="margin-right: 10px;">1주일</button><button class="btn btn-secondary" type="button" style="margin-right: 10px;">1개월</button><button class="btn btn-secondary" type="button" style="margin-right: 10px;">3개월</button><button class="btn btn-secondary" type="button" style="margin-right: 10px;">6개월</button><button class="btn btn-secondary" type="button" style="margin-right: 10px;">12개월 이상</button></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">향상된 키워드</td>
+                                                    <td class="d-block float-start" style="border-width: 1px;border-style: dashed;border-left-width: 1px;">
+                                                        <h6 class="display-6 d-inline-block float-start" style="font-size: 16px;line-height: 24px;">반드시 포함&nbsp;</h6>
+                                                        <h6 class="display-6 d-inline-block float-start"></h6><input class="form-control-sm d-inline-block float-start" type="text" style="width: 254px;border: 1px solid rgb(0, 0, 0) ;border-top-style: solid;">
+                                                    </td>
+                                                    <td class="d-block float-start" style="border-width: 1px;border-style: dashed;border-left-width: 1px;">
+                                                        <h6 class="display-6 d-inline-block float-start" style="font-size: 16px;line-height: 24px;">제외 단어&nbsp;</h6>
+                                                        <h6 class="display-6 d-inline-block float-start"></h6><input class="form-control-sm d-inline-block float-start" type="text" style="width: 254px;border: 1px solid rgb(0, 0, 0);border-top-style: solid;"><button class="btn btn-secondary" type="button" style="margin-right: 10px;padding-left: 20px;margin-left: 10px;">적용</button>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">인덱싱 소팅</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;">문제풀이&nbsp; &nbsp;개념정리&nbsp; &nbsp;지수로그함수<br></td>
+                                                </tr>
+                                                <tr style="border-style: none;border-top-color: rgb(33,;border-right-color: 37,;border-bottom-style: dashed;border-bottom-color: 41);border-left-color: 37,;">
+                                                    <td style="width: 200px;border-width: 1px;border-style: dashed;border-top-style: dashed;border-left-width: 1px;">원본영상 언어</td>
+                                                    <td style="border-width: 1px;border-style: dashed;border-left-width: 1px;">영어&nbsp; &nbsp; &nbsp;일본어&nbsp; &nbsp; &nbsp;중국어&nbsp; &nbsp; &nbsp;기타&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *더빙 언어는 한국어만 가능<br></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block clean-info dark" style="background: rgb(255,255,255);">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 style="font-weight: bold;color: #000000;text-align: left;">검색결과 - 39건</h2>
+                    <hr>
+                    <p></p>
+                </div>
+                <div class="row align-items-center" style="margin-bottom: 50px;">
+                    <div class="col-md-6 offset-xxl-0" style="width: 400px;height: 500px;">
+                        <div>
+                            <div class="vplayer" data-v="fUis9yny_lI" style="margin-top: 20px;">
+                                <div class="plybtn"></div>
+                            </div>
+                        </div><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;">전체화면보기</button><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;">반복재생</button><span class="fa-stack" style="font-size: 24px;"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-shopping-basket fa-stack-1x fa-inverse"></i></span>
+                        <div class="getting-started-info" style="margin-top: 10px;">
+                            <h3 class="text-start d-inline-block float-start d-xxl-flex align-items-xxl-center" style="text-align: center;margin-right: 10px;font-size: 24px;">현재시간</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">00:33:01</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">/</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">01:24:01</h3><span class="fa-stack" style="font-size: 20px;"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-reply fa-stack-1x fa-inverse"></i></span>
+                        </div>
+                        <div><a class="btn btn-dark btn-lg" role="button" href="#myModal" data-bs-toggle="modal" style="margin-top: 30px;">시리즈 전체 보기</a>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="myModal">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">시리즈 전체 보기</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p></p>
+                                        </div>
+                                        <div class="d-xxl-flex m-auto" style="max-width: 1000px;">
+                                            <table class="table table tablesorter" id="ipi-table">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="text-center sorter-false" style="width: 99px;">번호</th>
+                                                        <th class="text-center filter-false" style="width: 100px;">이미지</th>
+                                                        <th class="text-center filter-false sorter-false" style="width: 447px;">제목</th>
+                                                        <th class="text-center filter-false sorter-false" style="width: 128px;">시청이력</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">01</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">02</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">03</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">04</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">05</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-inline" style="width: 400px;height: 500px;">
+                        <div class="table-responsive" style="height: 180px;margin: 18px;border-top-style: none;">
+                            <table class="table">
+                                <thead style="border-style: none;border-top-style: none;">
+                                    <tr></tr>
+                                </thead>
+                                <tbody style="border-top-style: none;">
+                                    <tr>
+                                        <td>▶ 영상분석<br></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td style="width: 110PX;">제목</td>
+                                        <td style="border-top: 1PX solid rgb(222,226,230) ;">부트스트랩 디자인 실전강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <td>순서</td>
+                                        <td>7 / 45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>조회수</td>
+                                        <td>8.4천회</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive" style="height: 305px;margin: 18px;border-top-style: none;">
+                            <table class="table">
+                                <thead style="border-style: none;border-top-style: none;">
+                                    <tr></tr>
+                                </thead>
+                                <tbody style="border-top-style: none;">
+                                    <tr>
+                                        <td>▶ 채널분석<br></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td style="width: 110PX;">채널</td>
+                                        <td style="border-top: 1PX solid rgb(222,226,230) ;">유튜브</td>
+                                    </tr>
+                                    <tr>
+                                        <td>저자</td>
+                                        <td>Rock’s&nbsp;Easyweb<br></td>
+                                    </tr>
+                                    <tr>
+                                        <td>영상수</td>
+                                        <td>45편</td>
+                                    </tr>
+                                    <tr>
+                                        <td>총 조회수</td>
+                                        <td>3297.15만</td>
+                                    </tr>
+                                    <tr>
+                                        <td>분류</td>
+                                        <td>부트스트랩, CSS3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="width: 350px;height: 500px;">
+                        <div class="row">
+                            <div class="col-md-6" style="width: 500px;height: 350px;text-align: left;transform-origin: center;"><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;margin-top: 10px;">연관어분석</button><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;margin-top: 10px;">크게보기</button>
+                                <div class="exptag" style="width: 500px;height: 350px;font-family: 'Noto Sans KR', sans-serif;transform-origin: 250px 500px;">
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center" style="margin-bottom: 50px;">
+                    <div class="col-md-6 offset-xxl-0" style="width: 400px;height: 500px;">
+                        <div>
+                            <div class="vplayer" data-v="fUis9yny_lI" style="margin-top: 20px;">
+                                <div class="plybtn"></div>
+                            </div>
+                        </div><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;">전체화면보기</button><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;">반복재생</button><span class="fa-stack" style="font-size: 24px;"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-shopping-basket fa-stack-1x fa-inverse"></i></span>
+                        <div class="getting-started-info" style="margin-top: 10px;">
+                            <h3 class="text-start d-inline-block float-start d-xxl-flex align-items-xxl-center" style="text-align: center;margin-right: 10px;font-size: 24px;">현재시간</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">00:33:01</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">/</h3>
+                            <h3 class="text-start d-inline-block" style="text-align: center;margin-right: 10px;font-size: 24px;">01:24:01</h3><span class="fa-stack" style="font-size: 20px;"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-reply fa-stack-1x fa-inverse"></i></span>
+                        </div>
+                        <div><a class="btn btn-dark btn-lg" role="button" href="#myModal" data-bs-toggle="modal" style="margin-top: 30px;">시리즈 전체 보기</a>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="myModal-1">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">시리즈 전체 보기</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p></p>
+                                        </div>
+                                        <div class="d-xxl-flex m-auto" style="max-width: 1000px;">
+                                            <table class="table table tablesorter" id="ipi-table">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="text-center sorter-false" style="width: 99px;">번호</th>
+                                                        <th class="text-center filter-false" style="width: 100px;">이미지</th>
+                                                        <th class="text-center filter-false sorter-false" style="width: 447px;">제목</th>
+                                                        <th class="text-center filter-false sorter-false" style="width: 128px;">시청이력</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">01</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">02</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">03</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">04</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">05</td>
+                                                        <td style="width: 169px;">
+                                                            <div class="card"><img class="card-img-top w-100 d-block d-md-flex justify-content-md-center align-items-md-center" src="../assets/img/search.jpg" style="height: 100px;min-width: 100px;">
+                                                                <div class="card-body"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td><strong>부트스트랩&nbsp;웹 디자인 실전 강좌 7강</strong><br></td>
+                                                        <td class="text-center" style="width: 63px;"><strong>최근 시청함</strong><br></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-inline" style="width: 400px;height: 500px;">
+                        <div class="table-responsive" style="height: 180px;margin: 18px;border-top-style: none;">
+                            <table class="table">
+                                <thead style="border-style: none;border-top-style: none;">
+                                    <tr></tr>
+                                </thead>
+                                <tbody style="border-top-style: none;">
+                                    <tr>
+                                        <td>▶ 영상분석<br></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td style="width: 110PX;">제목</td>
+                                        <td style="border-top: 1PX solid rgb(222,226,230) ;">부트스트랩 디자인 실전강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <td>순서</td>
+                                        <td>7 / 45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>조회수</td>
+                                        <td>8.4천회</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive" style="height: 305px;margin: 18px;border-top-style: none;">
+                            <table class="table">
+                                <thead style="border-style: none;border-top-style: none;">
+                                    <tr></tr>
+                                </thead>
+                                <tbody style="border-top-style: none;">
+                                    <tr>
+                                        <td>▶ 채널분석<br></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td style="width: 110PX;">채널</td>
+                                        <td style="border-top: 1PX solid rgb(222,226,230) ;">유튜브</td>
+                                    </tr>
+                                    <tr>
+                                        <td>저자</td>
+                                        <td>Rock’s&nbsp;Easyweb<br></td>
+                                    </tr>
+                                    <tr>
+                                        <td>영상수</td>
+                                        <td>45편</td>
+                                    </tr>
+                                    <tr>
+                                        <td>총 조회수</td>
+                                        <td>3297.15만</td>
+                                    </tr>
+                                    <tr>
+                                        <td>분류</td>
+                                        <td>부트스트랩, CSS3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="width: 350px;height: 500px;">
+                        <div class="row">
+                            <div class="col-md-6" style="width: 500px;height: 350px;text-align: left;transform-origin: center;"><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;margin-top: 10px;">연관어분석</button><button class="btn btn-outline-info btn-lg" type="button" style="text-align: right;margin-right: 20px;margin-top: 10px;">크게보기</button>
+                                <div class="exptag" style="width: 500px;height: 350px;font-family: 'Noto Sans KR', sans-serif;transform-origin: 250px 500px;">
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                    <p style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;width: 400px;">시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.<br><br></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>CLIPPER</h5>
+                    <ul>
+                        <li><a href="#">&nbsp;상호 ㅣ (주)차가운</a></li>
+                        <li><a href="#">&nbsp;대표 ㅣ 김연섭</a></li>
+                        <li><a href="#">사업자번호 ㅣ 616-86-29484</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Contact us</h5>
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"><i class="fa fa-envelope footer-contacts-icon"></i>&nbsp; &nbsp;chagaunnet@gmail.com</a></li>
+                        <li><a href="#"><i class="fa fa-phone-square footer-contacts-icon"></i>&nbsp; &nbsp;+82-10-3342-6031</a></li>
+                        <li><a href="#"><i class="fa fa-address-book footer-contacts-icon"></i>&nbsp; &nbsp;서울시 영등포구 시흥대로 589-82층 204호</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support center</h5>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">이벤트안내</a></li>
+                        <li><a href="#">회사소개</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Information</h5>
+                    <ul>
+                        <li><a href="#">서비스 이용약관</a></li>
+                        <li><a href="#">개인정보 취급방침</a></li>
+                        <li><a href="#" style="margin-right: 10px;">패밀리사이트</a><select>
+                                <optgroup label="차가운 홈페이지">
+                                    <option value="12" selected="">chagaun.net</option>
+                                    <option value="13">aisolutons.kr</option>
+                                </optgroup>
+                            </select></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2022 Copyright&nbsp; Chagaun Inc.<br><br></p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+{% include "include/sub_nav.html" %}
+
+<!-- content -->
+<section class="sub_container" >
+		{% include "include/title.html" %}
+		<div class="sub_contents">
+
+			<div class="download">
+				<div class="wrap">
+					<div class="title">
+						<p>
+							인터넷을 통해 주기적이고 반복적인 작업을 해소할 수 있도록 지원해 주는<br>
+							RPA(Robotic Process Automation) 툴입니다..
+						</p>
+						<br><br><br>
+						<p>
+							자신이 운영중인 쇼핑몰, 블로그, 카페로부터 클리커를 통해 업무자동화를 이루어<BR>
+							고객과의 소통을 원할하고 비용과 시간을 줄일 수 있습니다.
+						</p>
+						<br><br><br>
+						<p>
+							클리커를 설치한 후 바탕화면에 있는 아이콘을 실행하면 클리커 메인창이 뜹니다.<br>
+							클리커에서 제공하는 샘플 파일를 로드하여 자신만의 레시피 파일을 만들어 사용할 수 있습니다.
+						</p>
+					</div>
+					<div class="middle">
+						<p><a href="{% url 'download-setup' filename='KlickerSetup.exe' %}" target="_blank" download class="download"><span class="en">DOWNLOAD</span></a></p>
+					</div>
+				</div>
+
+				<div class="top">
+					<div class="wrap">
+						<img src="{% static "img/contents/download_05.jpg" %}" class="main">
+						<ul>
+							<li>
+								<dt><img src="{% static "img/contents/download_01.png" %}"></dt>
+								<dd>
+									<p>Community</p>
+									Blog, Cafe
+								</dd>
+							</li>
+							<li>
+								<dt><img src="{% static "img/contents/download_02.png" %}"></dt>
+								<dd>
+									<p>Shopping</p>
+									Coupang, 11st, Interpark
+								</dd>
+							</li>
+							<li>
+								<dt><img src="{% static "img/contents/download_03.png" %}"></dt>
+								<dd>
+									<p>Social Network</p>
+									Fackbook, Instagram
+								</dd>
+							</li>
+							<li>
+								<dt><img src="{% static "img/contents/download_04.png" %}"></dt>
+								<dd>
+									<p>Internet portal</p>
+									Google, Naver, Daum
+								</dd>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="wrap">
+					<div class="middle">
+						<p>클리커 (Klicker)</p>
+						<ul>
+							<li>
+								<dl>
+									<dt>
+										<img src="{% static "img/contents/solution10.jpg" %}">
+									</dt>
+									<dd>
+										포털, 블로그, 카페, SNS, 쇼핑몰 등의<br>
+										사이트로부터 발생되는 반복 작업을<br>
+										클리커를 통해 해결할 수 있습니다.
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>
+										<img src="{% static "img/contents/solution05.jpg" %}">
+									</dt>
+									<dd>
+										클리커는 인터넷 업무자동화의 출발선상에 있습니다.
+									</dd>
+								</dl>
+							</li>
+
+						</ul>
+					</div>
+					<div class="bottom">
+						<p>클리커<span class="en">(Klicker)</span> 다운로드</p>
+						<a href="{% url 'download-setup' filename='KlickerSetup.exe' %}" target="_blank" download class="download"><span class="btn01">DOWNLOAD</span></a>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+</section>
+<!-- //content -->
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

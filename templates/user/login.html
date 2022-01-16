@@ -1,0 +1,96 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		<div class="sub_contents">
+			<form id="login_form">
+			<div class="login_box">
+				<img src="{% static "img/common/logo.png" %}" alt="차가운 AI 마케팅연구소" title="차가운 AI 마케팅연구소" class="logo"/>
+
+				<form id="loginForm" name="loginForm" method="POST" action="/">
+				<input type="hidden" name="smode" id="smode">
+				<div>
+					<ul>
+						<li>
+							<input name="email" type="text" value="" placeholder="아이디(이메일)" title="아이디를 입력해주세요." required="required">
+						</li>
+						<li>
+							<input name="password" type="password" value="" placeholder="비밀번호" title="비밀번호를 입력해주세요." required="required">
+						</li>
+					</ul>
+					<div class="btn_login">
+						<a href="javascript:void(0);" id="login_form_submit">로그인</a>
+					</div>
+				</div>
+				<div class="more_btn">
+					<span><a href="/Member/IDPW" title="비번찾기">비밀번호 찾기</a></span>
+				</div>
+				</form>
+
+				<div class="member_guide">
+
+					<p class="btn_join">
+						<a href="/Member/Agree"><input type="button" value="회원가입"></a>
+					</p>
+
+					<p>회원님의 아이디, 비밀번호를 입력하시기 바랍니다.</p>
+					<p>보안프로그램 미사용 선택 시, 고객님의 정보가 암호화되지 않습니다.</p>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+<script type="text/javascript" src="{% static "js/validate.js" %}"></script>
+<script>
+
+// 이메일 체크 정규식
+function chkEmail(asValue) {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
+}
+
+
+$(document).ready(function() {
+        $("#login_form_submit").click(function(){
+
+            if(validate('#login_form')==false) return;
+
+			var email = $("input[name='email']").val();
+
+			if(chkEmail(email) == false) {
+				alert('이메일 주소를 확인해주세요.');
+				return false;
+			}
+
+		    var form_data = $("#login_form").serialize();
+
+            $.ajax({
+                type : "POST",
+                url : "/api/v1/login",
+                cache : false,
+                data : form_data,
+                success: function(res) {
+					if(res) {
+						if(res.ok == true) {
+							location.replace('/');
+						} else {
+							alert(res.msg);
+						}
+					} else {
+						alert('예기치 않은 오류가 발생했습니다.');
+					}
+                }
+            });
+        });
+});
+</script>
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

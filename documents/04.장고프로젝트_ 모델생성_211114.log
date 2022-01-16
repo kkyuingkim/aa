@@ -1,0 +1,307 @@
+[설문조사 모델을 위한 앱 생성]
+
+-- 기본 환경
+vscode를 실행하여 원격으로 우분투 개발 서버에 접속이 되어 있어야 한다.
+01.장고프로젝트_ 환경 구성에서 만들어놓은 프로젝트로 들어가서 가상환경이 연결 되어 있어야 한다
+예제에서는 프로젝트: ysk_prj, 가상환경: vnv_ysk002를 기준으로 설명한다
+
+--polls라는 앱을 만든다
+vscode의 터미널 창을 열고 가상 환경이 연결되어 있는지를 확인한 후 앱을 만든다.
+(vnv_ysk002)$ python manage.py startapp polls
+=> 신규로 polls라는 폴더가 생성이 된다.
+
+-- chagaun_prj->polls라는 앱을 settings.py에 등록하여 polls라는 앱을 활성화 시켜준다.
+settings.py----------
+----------
+INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+:
+----------
+
+-- polls->models.py에 설문조사와 관련한 모델 테이블을 다음과 같이 만들어 준다.
+models.py----------
+from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+----------
+
+-- 생성한 모델 클래스를 SQLLite3 데이터베이스에 반영하여 실제 테이블이 만들어질 수 있도록 한다.
+(vnv_ysk002)$ python manage.py makemigrations polls
+(vnv_ysk002)$ python manage.py migrate polls
+
+-- 정상적으로 데이터베이스에 테이블이 잘 만들어졌는지 DDL 문장 확인하는 방법은 다음과 같다
+(vnv_ysk002)$ python manage.py sqlmigrate polls 001
+BEGIN;
+--
+-- Create model Question
+--
+CREATE TABLE "polls_question" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "question_text" varchar(200) NOT NULL, "pub_date" datetime NOT NULL);
+--
+-- Create model Choice
+--
+CREATE TABLE "polls_choice" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "choice_text" varchar(200) NOT NULL, "votes" integer NOT NULL, "question_id" bigint NOT NULL REFERENCES "polls_question" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "polls_choice_question_id_c5b4b260" ON "polls_choice" ("question_id");
+COMMIT;
+
+-- 관리자 페이지에서 polls 앱을 관리하도록 허용하기
+ysk_prj->polls->admin.py
+----------
+from django.contrib import admin
+
+from .models import Question
+
+admin.site.register(Question)
+----------
+
+-- URL MAPPING 하기(
+크롬에서 https://jin.chagaun.net/polls/를 쳤을때 이 메시지를 처음 받아 polls.urls에 리다이렉트시켜 줌
+ysk_prj->urls.py
+----------
+from django.conf.urls import include
+:
+    path('', lambda request: HttpResponse('안녕하세요. 환영합니다.')),
+    path('polls/', include('polls.urls', namespace="polls")),
+:
+----------
+
+ysk_prj->urls.py 로부터 리다이렉트 받은 ysk_prj->polls->urls.py 에서는 연결된 뷰를 호출한다
+ysk_prj->polls->urls.py
+----------
+:
+from django.urls import path
+from . import views
+
+app_name = 'polls'
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:question_id>/results/', views.results, name='results'),
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]:
+----------
+
+-- 위에서 맵핑된 뷰의 함수들을 임시로 만들어 본다.
+ysk_prj->polls->views.py
+----------
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("뷰의 인덱스를 호출하였습니다.")
+
+def detail(request, question_id):
+    return HttpResponse("You're looking at question %s." % question_id)
+
+def results(request, question_id):
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)
+----------
+
+-- 이제 개발용 서버를 실행한 후 크롬으로부 아래의 주소를 입력하여 정상적으로 실행이 되는지 확인한다
+(vnv_ysk002)$ python manage.py runserver 8002
+크롬 주소: 127.0.0.1:8002/polls/
+
+-- 이제는 탬플릿파일과 이미지들을 사용하기 위해 
+앱에 탬플릿파일과 스테틱파일(css, js, image 등)을 위치할 templates, static 폴더를 만들어 준다.
+(vnv_ysk002)$ cd polls
+(vnv_ysk002)$ mkdir templates
+(vnv_ysk002)$ cd templates
+(vnv_ysk002)$ mkdir polls
+(vnv_ysk002)$ cd ../
+(vnv_ysk002)$ mkdir static
+(vnv_ysk002)$ cd static
+(vnv_ysk002)$ mkdir pollls
+->그러면 ysk_prj->polls 밑에 templates, static라는 폴더가 만들어지고
+ysk_prj->polls->templates 폴더 밑에 polls 폴더가 만들어 지며
+ysk_prj->polls->static 폴더 밑에 polls 폴더가 만들어진다
+
+-- ysk_prj->polls->views.py에 다음을 추가한다
+ysk_prj->polls->views.py
+----------
+from django.template import loader
+from .models import Question
+:
+def poll_list(request):
+    # Question 테이블로부터 모든 데이터를 pub_date(역순) 데이터를 년도만 가져다  latest_question_list에 저장
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]   
+    template = loader.get_template('polls/poll_list.html')
+    context = {
+        'latest_question_list': latest_question_list,
+    }
+    return HttpResponse(template.render(context, request))
+:
+----------
+
+아래의 URL 매핑 정보도 수정해 준다
+ysk_prj->polls->urls.py
+----------
+:
+from django.urls import path
+from . import views
+
+app_name = 'polls'
+urlpatterns = [
+    path('', views.poll_list, name='list'),     # 여기가 수정됨
+    path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:question_id>/results/', views.results, name='results'),
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]:
+----------
+
+-- 탬플릿 파일도 만들어 준다.
+ysk_prj->polls->templates->poll_list.html
+----------
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+----------
+
+-- 이제 개발용 서버를 실행한 후 크롬으로부 아래의 주소를 입력하여 정상적으로 실행이 되는지 확인한다
+(vnv_ysk002)$ python manage.py runserver 8002
+크롬 주소: 127.0.0.1:8002/polls/
+
+설문조사 데이터가 하나도 없다. 관리자 페이지에서 설문조사를 등록한 후 다시 조회해보면 정상적으로 데이터가 호출됨을 알수 있다.
+
+
+-- 이번에는 저장된 설문 목록을 조회해본다.
+-- ysk_prj->polls->views.py에 다음을 변경한다
+ysk_prj->polls->views.py
+----------
+from django.http import Http404
+:
+def detail(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        raise Http404("Question does not exist")
+    return render(request, 'polls/detail.html', {'question': question})
+:
+----------
+
+-- 탬플릿 파일도 만들어 준다.
+ysk_prj->polls->templates->detail.html
+----------
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>
+----------
+
+-- 이제 개발용 서버를 실행한 후 크롬으로부 아래의 주소를 입력하여 정상적으로 실행이 되는지 확인한다
+(vnv_ysk002)$ python manage.py runserver 8002
+크롬 주소: 127.0.0.1:8002/polls/
+
+-- poll_list.html에서 하드 코딩된 링크를 다음과 같이 변경한 후 실행해 본다.
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        => 목록을 클릭시 polls앱의 detail을 수행하는데 question.id를 인수로 넘긴다는 의미
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+ysk_prj->polls->templates->poll_list.html
+
+----------
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+----------
+
+-- 설문 조사(수정)을 하기 위해 vote.html을 새로 만든다
+# choice_set: Question의 Foregin Key로 연결된 Choice 데이터를 의미
+ysk_prj->polls->templates->vote.html
+----------
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>
+----------
+
+ysk_prj->polls->templates->result.html
+----------
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+----------
+
+
+뷰의 vote 함수도 다음과 같이 수정한다.
+ysk_prj->polls->views.py
+----------
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from .models import Choice, Question
+from django.urls import reverse
+:
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        # choice_set: Question의 Foregin Key로 연결된 Choice 데이터를 가져오라는 의미
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/results.html', {'question': question})
+
+----------
+
+-- 이제 개발용 서버를 실행한 후 크롬으로부 아래의 주소를 입력하여 정상적으로 실행이 되는지 확인한다
+(vnv_ysk002)$ python manage.py runserver 8002
+크롬 주소: 127.0.0.1:8002/polls/
+
+관리자 페이지에서 설문 결과도 입력한 후 투표도 테스트해본다.
+크롬 주소: 127.0.0.1:8002/polls/1/vote

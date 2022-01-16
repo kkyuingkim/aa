@@ -1,0 +1,241 @@
+{% load static %}
+<link href="{% static "css/board.css" %}" rel="stylesheet" type="text/css">
+<link href="{% static "css/bbs_style.css" %}" rel="stylesheet" type="text/css">
+
+{%if m is None or m == "l" %}
+		<!--인기-->
+		<section class="construct_best">
+			<div class="slider1 port_list">
+{% for post in top_posts %}
+				<div class="slide">
+					<dl>
+						<dt>
+							<a href="?page={{ page }}&id={{ post.id }}&m=v" class="line">
+								<img src="{% static "img/contents/img_none.jpg" %}"  />
+								<p class="img">
+									<img src="{{ post.image1.url }}"  />
+								</p>
+							</a>
+						</dt>
+						<dd>
+							<a href="result_view.html" class="line">
+								<p class="p_name">{{ post.subject }}</p>
+							</a>
+						</dd>
+					</dl>
+				</div>
+{% endfor %}
+			</div>
+		</section>
+		<!--//인기-->
+		<section class="construct_list_area mat50 pat50 pab50" id="construct_style">
+			<section class="home_style">
+				<ul>
+{% for category in my_sub_categorys %}
+					<li {% if my_sub_category.code == category.code %} class="on" {% endif %}>
+						<a href="{{ category.path }}">{{ category.name }}</a>
+					</li>
+{% endfor %}
+				</ul>
+			</section>
+			<div class="c_list_title">
+				<p class="search_box">
+					<input name="keyword" type="text" value="{{ keyword }}" />
+					<a href="javascript:void(0);" onclick="location.href='?field=subject&keyword=' + document.getElementsByName('keyword')[0].value;" ><img src="{% static "img/common/search_btn.gif" %}" /></a>
+				</p>
+			</div>
+			<!--리스트-->
+			<div>
+				<ul class="port_list">
+{% for post in posts %}
+					<li>
+						<dl>
+							<dt>
+								<a href="?page={{ page }}&id={{ post.id }}&m=v" class="line">
+									<img src="{% static "img/contents/img_none.jpg" %}"  />
+									<p>
+										<span><img src="{{ post.image1.url }}"  /></span>
+									</p>
+								</a>
+							</dt>
+							<dd>
+								<a href="result_view01.html" class="line">
+									<p class="port_name">
+										<span class="tit">{{ post.subject }}</span>
+									</p>
+									<p class="port_con" style="display:none;">
+									</p>
+								</a>
+							</dd>
+						</dl>
+					</li>
+{% endfor %}
+				</ul>
+			</div>
+		</section>
+
+	<!--페이징-->
+	<div class="bo_pagenate clearfix">
+
+		<div class="paging">
+{% if posts.has_previous %}
+			<a class="first" href="?page=1">첫 페이지</a>
+			<a class="prev" href="?page={{ posts.previous_page_number }}&field={{ field }}&keyword={{ keyword }}">이전 페이지</a>
+{% endif %}
+		<ol>
+{% for num in posts.paginator.page_range %}
+
+	{% if posts.number == num %}
+				<li><a href="javascript:void(0);" class="on">{{ num }}</a></li>
+	{% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+				<li><a href="?page={{ num }}&field={{ field }}&keyword={{ keyword }}" class="">{{ num }}</a></li>
+	{% endif %}
+
+{% endfor %}
+		</ol>
+{% if posts.has_next %}
+			<a class="next" href="?page={{ posts.next_page_number }}&field={{ field }}&keyword={{ keyword }}">다음 페이지</a>
+			<a class="end" href="?page={{ posts.paginator.num_pages }}&field={{ field }}&keyword={{ keyword }}">끝 페이지</a></div>
+{% endif %}
+		</div>
+	</div>
+	<div class="bo_pagenate_mobile clearfix">
+
+		<div class="paging"> 
+{% if posts.has_previous %}
+			<a class="prev" href="?page={{ posts.previous_page_number }}&field={{ field }}&keyword={{ keyword }}">이전 페이지</a>
+{% endif %}
+			<ol>
+				<li class="on">{{ page }}</li><li>/</li><li>{{ posts.paginator.num_pages }}</li>
+			</ol>
+{% if posts.has_next %}
+			<a class="next" href="?page={{ posts.next_page_number }}&field={{ field }}&keyword={{ keyword }}">다음 페이지</a>
+{% endif %}
+		</div>
+	</div>
+
+
+{% endif %}
+{%if m == "v" %}
+			<section class="event_view">
+
+				<div class="event_pic">
+					<div class="end_thum" id="end_thum">
+						<ul class="pic">
+{% if posts.image1 %}
+		        	<li><img src="{{ posts.image1.url }}"></li>
+{% endif %}
+{% if posts.image2 %}
+		        	<li><img src="{{ posts.image2.url }}"></li>
+{% endif %}
+{% if posts.image3 %}
+		        	<li><img src="{{ posts.image3.url }}"></li>
+{% endif %}
+{% if posts.image4 %}
+		        	<li><img src="{{ posts.image4.url }}"></li>
+{% endif %}
+{% if posts.image5 %}
+		        	<li><img src="{{ posts.image5.url }}"></li>
+{% endif %}
+						</ul>
+						<div id="bx-pager" class="bx-pager">
+		        	<ul>
+{% if posts.image1 %}
+			          	<li><p><a data-slide-index="0" href=""><img src="{{ posts.image1.url }}"></a></p></li>
+{% endif %}
+{% if posts.image2 %}
+			          	<li><p><a data-slide-index="1" href=""><img src="{{ posts.image2.url }}"></a></p></li>
+{% endif %}
+{% if posts.image3 %}
+			          	<li><p><a data-slide-index="2" href=""><img src="{{ posts.image3.url }}"></a></p></li>
+{% endif %}
+{% if posts.image4 %}
+			          	<li><p><a data-slide-index="3" href=""><img src="{{ posts.image4.url }}"></a></p></li>
+{% endif %}
+{% if posts.image5 %}
+			          	<li><p><a data-slide-index="4" href=""><img src="{{ posts.image5.url }}"></a></p></li>
+{% endif %}
+		          </ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="event_data">
+					<dl>
+						<dt>
+							{{ posts.subject }}
+						</dt>
+						<dd>
+							<p class="edata_tit">
+								제품
+							</p>
+							<p class="edata_sub">																	{{ posts.model }}
+							</p>
+						</dd>
+						<dd>
+							<p class="edata_tit">
+								위치
+							</p>
+							<p class="edata_sub">
+								{{ posts.address }}
+							</p>
+						</dd>
+						<dd>
+							<p class="edata_tit">
+								공사년도 
+							</p>
+							<p class="edata_sub">
+								{{ posts.work_year }}
+							</p>
+						</dd>
+						<dd>
+							<p class="edata_tit">
+								규모 
+							</p>
+							<p class="edata_sub">
+								{{ posts.scale }}
+							</p>
+						</dd>
+						<dd>
+							<p class="edata_tit">
+								특징 
+							</p>
+							<p class="edata_sub">
+								{{ posts.feature }}
+							</p>
+						</dd>
+					</dl>
+					<div class="sns">
+						<a href="#"><img src="{% static "img/board/sns_facebook.png" %}"></a>
+						<a href="#"><img src="{% static "img/board/sns_twitter.png" %}"></a>
+						<a href="#"><img src="{% static "img/board/sns_linkedin.png" %}"></a>
+					</div>
+				</div>
+			</section>
+			<p class="clear list_button">
+				<span class="event_view_all"  onclick="location.href='?page={{ page }}';"> 전체목록</span>
+			</p>
+
+			</div>
+
+		</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('.pic').bxSlider({
+		  pagerCustom: '#bx-pager',
+		 mode: 'fade',
+		  auto: true,
+		  autoControls: true,
+		   autoHover:true,
+		   pager: true,
+		  pause: 4000,
+		  speed : 1000,
+		});
+
+	});
+
+</script>
+{% endif %}

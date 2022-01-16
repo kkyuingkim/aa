@@ -1,0 +1,132 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+
+<!--아이디찾기-->
+<div id="layer">
+	<div class="inner">
+		<div class="cont">
+			<h3>아이디 찾기 결과</h3>
+			<p>아이디 : gngnet9033</p>
+			조회하신 회원님의 아이디는 다음과 같습니다.
+
+		</div>
+		<a href="#none" class="close">확인</a>
+	</div>
+</div>
+<div class="dim"></div>
+<!--아이디찾기-->
+
+<!--비밀번호찾기-->
+<div id="layer2">
+	<div class="inner2">
+		<div class="cont2">
+			<h3>비밀번호 찾기 결과</h3>
+			<p>아이디 : gngnet9033</p>
+			회원정보에 지정하신 메일로 비밀번호를 발송하였습니다.<br>
+			비밀번호 관리에 유의해 주시기 바랍니다.
+		</div>
+		<a href="#none2" class="close2">확인</a>
+	</div>
+</div>
+<div class="dim2"></div>
+<!--비밀번호찾기-->
+
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		<div class="sub_contents">
+
+
+
+
+			<!-- find -->
+			<div class="find">
+
+				<div class="pw_area">
+					<h3 class="stit">비밀번호 찾기 </h3>
+					<p>
+						임시 비밀번호가 E-mail로 발송됩니다.
+					</p>
+					<form id="pw_reset_form">
+						<div class="join_form">
+							<dl class="email">
+								<dt>이메일</dt>
+								<dd>
+									<input name="email1" type="text" required="required" title="이메일 계정를 입력해주세요."/>
+									@
+									<input name="email2" type="text" required="required" title="이메일 주소를 입력해주세요."/>
+								</dd>
+							</dl>
+						</div>
+					</form>
+					<!--버튼-->
+					<div class="btn_area">
+						<a href="javascript:void(0);" id="pw_reset_form_submit" class="button btn01 button2">확인</a>
+						<a href="javascript:history.back(-1);" class="button btn02">취소</a>
+					</div>
+					<!--버튼-->
+				</div>
+
+			</div>
+			<!-- //find -->
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+<script type="text/javascript" src="{% static "js/validate.js" %}"></script>
+<script>
+
+// 이메일 체크 정규식
+function chkEmail(asValue) {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
+}
+
+
+$(document).ready(function() {
+
+	
+        $("#pw_reset_form_submit").click(function(){
+
+            if(validate('#pw_reset_form')==false) return;
+
+	    var email = $("input[name='email1']").val() + '@' + $("input[name='email2']").val();
+
+	    if(chkEmail(email) == false) {
+		alert('이메일 주소를 확인해주세요.');
+		return false;
+	    }
+
+	    var form_data = $("#pw_reset_form").serialize();
+
+            $.ajax({
+                type : "POST",
+                url : "/api/v1/pw/reset",
+                cache : false,
+                data : form_data,
+                success: function(res) {
+		    if(res) {
+			if(res.ok == true) {
+			    alert(res.msg);
+			    location.href = '/Member/Login';
+			} else {
+			    alert(res.msg);
+			}
+		    } else {
+			alert('예기치 않은 오류가 발생했습니다.');
+		    }
+                }
+            });
+        });
+});
+</script>
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

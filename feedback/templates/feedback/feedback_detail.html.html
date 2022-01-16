@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>feedback</title>
+    <link rel="stylesheet" href="{% static 'feedback/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'feedback/assets/css/Contact-Form-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'feedback/assets/css/styles.css' %}">
+</head>
+
+<body>
+    <section class="contact-clean">
+        <form id="feedback_edit_form" method="post">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.as_table }}
+            </table>
+            <div class="mb-3" style="text-align: center;"><button class="btn btn-primary" type="submit" style="padding-right: 32px;margin-right: 8px;margin-left: 8px;">저장</button><button class="btn btn-primary" type="button" style="margin-right: 8px;margin-left: 8px;"><a href="{% url 'feedback:list' %}">돌아가기</a></button></div>
+        </form>
+    </section>
+    <script src="{% static 'feedback/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

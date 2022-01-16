@@ -1,0 +1,81 @@
+{% load static %}
+<!--footer-->
+<footer id="footer" class="footer">
+
+	<div class="top">
+		<div class="wrap">
+			<ul>
+				<li><a href="/Guide/Company">회사소개</a></li>
+				<li><a href="/Guide/Terms">이용약관</a></li>
+				<li><a href="/Guide/Privacy">개인정보처리방침</a></li>
+				<li><a href="/Guide/Policy">운영정책</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="bottom">
+		<div class="wrap">
+			<ul>
+				<li>
+					<dt>상호</dt>
+					<dd>(주)차가운</dd>
+				</li>
+				<li>
+					<dt>대표</dt>
+					<dd>김연섭</dd>
+				</li>
+				<li>
+					<dt>사업자등록번호</dt>
+					<dd>616-86-29484</dd>
+				</li>
+				<li>
+					<dt>통신판매업신고</dt>
+					<dd>제2020호-서울마포-2053호</dd>
+				</li>
+				<li>
+					<dt>주소</dt>
+					<dd>서울시 영등포구 시흥대로 589-8 202동 204호</dd>
+				</li>
+				<li>
+					<dt>전화번호</dt>
+					<dd>010-3930-0624, 010-2213-6031</dd>
+				</li>
+				<li>
+					<dt>이메일</dt>
+					<dd>chagaunnet@gmail.com</dd>
+				</li>
+				<li class="copy">
+					<dt>Copyright © Chagaun Inc. All rights reserved.</dt>
+				</li>
+			</ul>
+			<img src="{% static "img/common/logo.png" %}" alt="차가운 AI 마케팅연구소" title="차가운 AI 마케팅연구소" class="logo"/>
+		</div>
+	</div>
+
+	<div class="btn_top">
+		<p>
+			<a href="#section1"><img src="{% static "img/common/btn_top.jpg" %}" alt="top" /></a>
+		</p>
+	</div>
+</footer>
+
+<!--//footer-->
+
+<script>
+$(".btn_top").hide();
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.btn_top').fadeIn();
+        } else {
+            $('.btn_top').fadeOut();
+        }
+    });
+    $('.btn_top a').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+});
+</script>

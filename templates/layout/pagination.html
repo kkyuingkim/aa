@@ -1,0 +1,55 @@
+{% load static %}
+{% load extra_util %}
+
+<link href="{% static "css/board.css" %}" rel="stylesheet" type="text/css">
+<link href="{% static "css/bbs_style.css" %}" rel="stylesheet" type="text/css">
+{% if data %}
+	<!--board:footer-->
+	<section class="bo_footer clearfix">
+
+	<!--paging:wide_screen-->
+	<div class="bo_pagenate clearfix">
+
+		<div class="paging">
+{% if data.has_previous %}
+			<a class="first" href="{{ request.path }}?{% query_transform request page=1 %}">첫 페이지</a>
+			<a class="prev" href="{{ request.path }}?{% query_transform request page=data.previous_page_number %}">이전 페이지</a>
+{% endif %}
+		<ol>
+{% for num in data.paginator.page_range %}
+
+	{% if data.number == num %}
+				<li><a href="javascript:void(0);" class="on">{{ num }}</a></li>
+	{% elif num > data.number|add:'-3' and num < data.number|add:'3' %}
+				<li><a href="{{ request.path }}?{% query_transform request page=num %}" class="">{{ num }}</a></li>
+	{% endif %}
+
+{% endfor %}
+		</ol>
+{% if data.has_next %}
+			<a class="next" href="{{ request.path }}?{% query_transform request page=data.next_page_number %}">다음 페이지</a>
+            <a class="end" href="{{ request.path }}?{% query_transform request page=data.paginator.num_pages %}">끝 페이지</a></div>
+{% endif %}
+        </div>
+		<!--//paging:wide_screen-->
+		<!--paging:small_screen-->
+		<div class="bo_pagenate_mobile clearfix">
+		<div class="paging">
+{% if data.has_previous %}
+			<a class="prev" href="{{ request.path }}?{% query_transform request page=data.previous_page_number %}">이전 페이지</a>
+{% endif %}
+			<ol>
+				<li class="on">{{ page }}</li><li>/</li><li>{{ data.paginator.num_pages }}</li>
+			</ol>
+{% if data.has_next %}
+			<a class="next" href="{{ request.path }}?{% query_transform request page=data.next_page_number %}">다음 페이지</a>
+{% endif %}
+		</div>
+		</div>
+		<!--//paging:small_screen-->
+
+	</section>
+{% else %}
+	<p style="text-align: center;">검색된 결과가 없습니다.</p>
+{% endif %}
+<!--//board:footer-->

@@ -1,0 +1,128 @@
+-- 우분투 18.04 설치 후 기다리면 업데이트를 18.04 업데이트를 요구하는데 이때 업데이트를 하게 되면 python 3.6.9가 기본으로 설치된다
+https://releases.ubuntu.com/bionic/ubuntu-18.04.6-desktop-amd64.iso
+
+-- 먼저 python3용 pip3를 설치한다.
+-- sudo apg-get python3-pip
+-- sudo apg-get python3-venv
+
+-- python --version, pip --version 명령어가 먹히지 않고 python3 --version, pip3 --version 만 먹힌다
+-- 따라서 이 python3를 기본 파이썬으로 설정하기 위해 ~/.bashrc 의 마지막에 다음을 등록해 놓는다
+$ vi ~/.bashrc
+:
+alias python=python3
+alias pip=pip3
+
+-- sudo reboot로 우분투를 리부팅한다
+$ sudo reboot
+
+-- 클라이언트에서 접속할 ssh 설치
+$ sudo apt install openssh-server
+
+-- /etc/ssh/sshd_config 포트 변경하기
+$ sudo /etc/ssh/sshd_config
+:
+#Port 22
+Port 16022
+
+-- 변경한 포트 반영하기
+$ sudo systemctl status ssh
+$ sudo systemctl enable ssh
+$ sudo systemctl restart ssh
+
+-- 정상적으로 접속이 잘 되는지 확인하기
+$ ssh chagaun@222.112.40.134 -p 16022
+$ exit
+=>putty, vscode를 통해 클라이언트에서도 확인 필요
+
+-- 방화벽 포트 열기
+$ sudo ufw allow 16022/tcp
+
+[ubuntu 기본 명렬어]
+-- 현재의 폴더 위치 확인
+$ pwd
+
+-- 자신의 Home 폴더로 이동
+$ cd
+
+-- 폴더 리스트 보기
+$ ls 또는 ll 또는 ls -al
+
+-- 네트워크 포트가 열려 있는지 확인
+$ netstat -nltp
+
+-- 프로세스 CPU 점유 상태 확인
+$ top
+
+-- GPU 카드 상태보기(한번)
+$ nvidia-smi
+
+-- GPU 카드 상태보기(1초 단위로 보기)
+$ watch -d -n 1.0 nvidia-smi
+
+-- ubuntu 버전 보기
+cat /etc/os-release
+
+-- 디스크 사용량 보기
+$ du -sh .
+
+-- 디스크 남은 용량 보기
+$ df -h .
+
+-- 방화벽 상태 보기
+$ sudo ufw status
+
+-- 방화벽 활성화 하기
+$ sudo ufw enable
+
+-- 방화벽 특정 포트 열기
+$ sudo ufw allow 16022/tcp
+
+-- 서비스(데몬) 상태 보기
+$ sudo systemctl status kibana
+
+-- 서비스(데몬) 시작하기
+$ sudo systemctl start kibana
+
+-- 서비스(데몬) 정지하기
+$ sudo systemctl stop kibana
+
+-- 서비스(데몬) 재시작하기
+$ sudo systemctl restart kibana
+
+-- 프로세스가 정상적으로 실행중에 있는지 확인하기
+$ ps -ef | grep kibana
+
+-- 실행중인 프로세스 죽이기
+$ kill -9 pid
+
+-- 파일 내용 보기
+$ cat ~/.bashrc
+$ tail -n 100 ~/.bashrc
+$ head -n 100 ~/.bashrc
+
+-- 파일 내용 수정
+$ vi 파일명 또는
+$ nano 파일명
+
+-- 특정 폴더 파일 갯수 확인
+$ ls /var/www | wc -l
+
+-- 파일 삭제
+$ rm 파일명
+
+-- 폴더 및 하위파일 삭제
+$ rm -rf 폴더명
+
+-- .zip 파일 현재 위치에 압축 풀기
+$ unzip 파일명.zip
+
+-- .zip 파일 현재 위치에 압축 하기
+$ zip 파일명.zip 파일명 파일명 폴더명 폴더명
+
+-- .tar 파일 현재 위치에 압축 풀기
+tar -xvf 파일명.tar 
+
+-- .tar 파일 현재 위치에 압축 하기
+tar -cvf 파일명.tar 파일명 파일명 폴더명 폴더명
+
+

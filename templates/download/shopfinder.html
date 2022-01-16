@@ -1,0 +1,46 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+{% include "include/sub_nav.html" %}
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		{% include "include/title.html" %}
+		<div class="sub_contents">
+
+
+			<div class="download">
+				<div class="wrap">
+					<div class="title">
+						<p>
+							클리커의 이전에 출시 된 모든 버전을 다운 받으실 수 있습니다.
+						</p>
+						<br><br><br>
+						<p>
+							<strong style="color:rgb(0, 150, 255);">현재 버전이 최신 버전입니다.</strong>
+						</p>
+					</div>
+					<div class="middle">
+						<p><a href="{% url 'download-setup' filename='ShopFinderSetup.exe' %}" target="_blank" download class="download"><span class="en">DOWNLOAD</span></a></p>
+					</div>
+				</div>
+
+					<div class="bottom">
+						<p>최신버전 클리커<span class="en">(the latest version)</span> 다운로드</p>
+						<a href="{% url 'download-setup' filename='ShopFinderSetup.exe' %}" target="_blank" download class="download"><span class="btn01">DOWNLOAD</span></a>
+					</div>
+				</div>
+			</div>
+			
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

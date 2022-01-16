@@ -1,0 +1,154 @@
+
+[아파치 설치 및 게이트웨이 설치]
+-- 준비사항
+먼저 ubuntu 18.04, python 3.x 이 설치된 서버를 준비한다.
+서버와 원격 연결을 통해 개발을 하기 위해 클라이언트(Windows 10)에 vscode, putty를 설치해 놓는다.
+https://code.visualstudio.com/download
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+-- 기본 소프트웨어가 설치가 안 되어 있을 수 있으므로 다음 실행하여 설치를 확인한다
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install libmysqlclient-dev -y
+sudo apt-get install gcc -y
+sudo apt-get install python3-dev -y
+
+$ sudo apt-get install apache2
+$ sudo apt-get install libapache2-mod-wsgi-py3
+$ python 3.x가 설치되어 있음을 전제로 한다.
+
+-- 참고 사이트
+http://pythonstudy.xyz/python/article/301-Django-%EC%86%8C%EA%B0%9C
+https://docs.djangoproject.com/ko/3.0/contents/
+
+
+[우분투 유저 생성]
+1. 계정 만들기
+
+--생성 할 아이디를 만들고 비번 등을 입력한다
+$ sudo adduser ysk002
+
+--새로 만든 유저에게 sudo를 사용할 권한을 부여한다
+$ sudo usermod -aG sudo ysk002
+
+--새로 생성된 유저를 확인한다
+$ sudo cat /etc/passwd 
+
+--생성된 유저를 삭제한다
+$ sudo deluser ysk002
+
+--생성된 유저와 함께 생성된 home 폴더를 함께 삭제한다
+$ sudo deluser --remove-home ysk002
+
+-- putty라는 ssh 툴을 설치하여 이를 이용하여 접속해 본다
+==> 새로 생성된 유저로 로그인 한다
+
+[파이썬 가상 환경 만들기]
+-- 먼저 새로 만들 프로젝트 폴더를 하나 만든다
+$ mkdir ysk_project
+$ cd ysk_project
+
+$ python --version
+Python 3.6.9
+
+-- vnv_ysk002 라는 가상 환경을 만든다
+$ python -m venv vnv_ysk002
+$ source ./vnv_ysk002/bin/activate
+(vnv_ysk002)$ pip list
+(vnv_ysk002)$ python -m pip install --upgrade pip
+
+-- 새로 생성된 가상 환경에서 장고 패키지를 설치한다
+(vnv_ysk002)$ pip install django
+
+-- MySQL 패키지를 설치한다
+(vnv_ysk002)$ pip install mysqlclient
+
+-- 설치된 장고 패키지를 이용하여 프로젝트를 만든다
+(vnv_ysk002)$ django-admin startproject ysk_prj
+cd ysk_prj
+
+-- vscode를 설치하여 실행한다
+-- 확장팩을 설치한다
+Korean 언어팩, Python(IntelliSense,,),Python for VSCode, Python Extension Pack
+
+-- vscode remote developement라는 extension pack을 설치한다
+-- F1 이를 이용하여 Remote Host를 선택하여 원격으로 우분투에 접속한다
+
+-- 위에서 만들어 놓은 프로젝트 폴더(ysk_prj)를 선택한다
+/home/ysk002/ysk_project/ysk_prj 선택
+
+-- Ctrl+~를 눌러 터미널 창을 오픈하여 이후부터 putty 대신 사용한다.
+
+-- F1 키->Python: Select Interpreter를 눌러 가상환경 위에서 만든 가상 환경을 연결한다
+
+-- 터미널 창에서도 가상환경으로 들어간다
+$ source ../vnv_ysk002/bin/activate
+
+-- 프로젝트의 설정 파일의 기본 값을 변경해 놓는다.
+
+ysk_prj->settings.py
+----------
+from pathlib import Path, os
+
+ALLOWED_HOSTS = ["*"]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+:
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 20240000
+
+LANGUAGE_CODE = 'ko-kr'
+TIME_ZONE = 'Asia/Seoul'
+
+STATIC_URL = '/static/'
+if DEBUG == True:
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+----------
+
+-- 검색을 위한 앱을 신규로 생성한다.
+(vnv_ysk002)$ python manage.py startapp search
+/home/ysk002/ysk_project/ysk_prj/search 라는 앱폴더가 생성됨을 확인한다
+
+-- 신규로 생성된 앱을 settings 폴더에 등록한다
+ysk_prj->settings.py
+----------
+INSTALLED_APPS = [
+    'search.apps.SearchConfig',
+:
+----------
+
+-- SQLLite 데이터 베이스를 활성화한다
+(vnv_ysk002)$ python manage.py makemigrations
+(vnv_ysk002)$ python manage.py migrate
+
+
+-- 개발용 서버 실행
+(vnv_ysk002)$ python manage.py runserver 8001
+Starting development server at http://127.0.0.1:8001/
+
+-- 사이트 열기
+위의 서버 실행시 출력되는 사이트 주소를 Ctrl+Click를 눌러 웹사이트를 들어간다
+
+-- 장고 관리자의 수퍼유저 만들기
+(vnv_ysk002)$ python manage.py crestesuperuser
+
+-- 관리자 페이지 들어가 보기
+위에서 실행해본 웹사이트 뒤에 admin을 붙인 후 엔터를 치면 된다
+http://127.0.0.1:8001/admin
+
+
+
+
+
+
+
+

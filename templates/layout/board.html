@@ -1,0 +1,69 @@
+{% load static %}
+<link href="{% static "css/board.css" %}" rel="stylesheet" type="text/css">
+<link href="{% static "css/bbs_style.css" %}" rel="stylesheet" type="text/css">
+
+{% if id  %}
+<section class="event_view">
+	<div class="event_title">
+		<dl>
+			<dt>{{ data.subject }}</dt>
+			<dd>{{ data.created_at | date:"Y.m.d" }}</dd>
+		</dl>
+	</div>
+	<div class="view_contents">
+		{{ data.content | safe }}
+		<p><a href="/media/{{ data.file0 }}" target="_blank" download class="download"><file src=<span class="en">{{data.file0}}</span></a></p>
+	</div>
+	<p><span class="event_view_all" onclick="location.href='?page={{ page }}';"> 전체목록</span></p>
+ </section>
+{% else %}
+<section class="board_area">
+<!--board:top-->
+	<section class="bo_top clearfix">
+		<p class="total">Total : {{ total }}</p>
+		<form method="get" action="">
+			<div class="search"> <label class="blind" for="">검색방법선택</label>
+				<span style="position:relative">
+					<select id="something" name="field">
+						<option value="subject" {% if request.GET.field == "subject" %} selected="seleted" {% endif %}>제목</option>
+						<option value="content" {% if request.GET.field == "content" %} selected="seleted" {% endif %}>내용</option>
+					</select>
+				</span>
+				<input title="검색어를 입력해 주세요." type="text" name="keyword" value="{{ request.GET.keyword }}"> <input title="검색" type="submit" value="검색">
+			</div>
+		</form>
+	</section>
+	<!--//board:top-->
+
+	<!--board:basic_list-->
+	<section class="bo_basic_list clearfix ">
+
+	<form name="bbs_ListForm">
+	    <table summary="">
+	        <caption>일반게시판 리스트</caption>
+		<thead>
+			<tr>
+				<th class="a">번호</th>
+                <th class="b">제목</th>
+                <th class="c">작성일</th>
+				<th class="d">조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+{% for data in data %}
+			<tr>
+				<td class="tda"> {{ data.no }}</td>
+		        <td class="tdb"><a href="?page={{ page }}&id={{ data.id }}&m=v">{{ data.subject }}<span class="date">{{ data.created_at | date:"Y.m.d" }}</span></a></td>
+		        <td class="tdc">{{ data.created_at | date:"Y.m.d" }}</td>
+				<td class="tdd">{{ data.view }}</td>
+			</tr>
+{% endfor %}
+		</tbody>
+	    </table>
+	</form>
+	</section>
+	<!--//board:basic_list-->
+</section>
+<!--//board-->
+
+{% endif %}

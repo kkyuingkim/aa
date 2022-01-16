@@ -1,0 +1,112 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		{% include "include/title.html" %}
+		<div class="sub_contents">
+
+
+
+			<!-- 일괄 동의 -->
+			<div class="agree agree_all">
+				<div class="agree_all_in">
+					<div class="agree_all_txt">
+						<img src="{% static "img/common/logo.png" %}" alt="차가운 AI 마케팅연구소" class="logo">
+						<p class="point_c2 bold">
+							본 회원은 약관, 동의서, 유의사항, 관리규정을 모두 이해하였습니다. 아래의 사항에 일괄 동의합니다. <br />
+							<span class="guide">※ 각 항목에 대해 개별적으로 동의를 선택하실 수 있습니다.</span>
+						</p>
+
+					</div>
+					<p class="join_check">
+						<span>
+							<input name="agree_all" id="agree_all" type="radio" onclick="javascript:checkall(1);" value="radiobutton" required="required" title="일괄 동의" alt="일괄 동의">
+							일괄 동의
+						</span>
+						<span>
+							<input name="agree_all" id="agree_all" type="radio" onclick="javascript:checkall(0);" value="radiobutton" required="required" title="일괄 동의 안함" alt="일괄 동의 안함">
+							일괄 동의 안함
+						</span>
+					</p>
+				</div>
+			</div>
+			<script>
+			function checkall(a){
+				if(a == "1"){
+					$("#agree1").attr('checked', true);
+					$("#agree2").attr('checked', true);
+				}
+				if(a == "0"){
+					$("#agree1").attr('checked', false);
+					$("#agree2").attr('checked', false);
+				}
+			}
+			</script>
+			<!-- //일괄 동의 -->
+
+		<form id="agreeForm" method="post">
+			<!-- 이용약관 -->
+			<div id="agree01" class="agree mat30">
+				<h3 class="stit">이용약관</h3>
+				<div class="con terms">
+					{% include "guide/terms/terms_con.html" %}
+				</div>
+				<p class="join_check">
+					<input id="agree1" name="agree1" type="checkbox"  value="radiobutton" required="required" title="위의 이용약관 에 동의 합니다." alt="위의 이용약관 에 동의 합니다."/>
+					위의 이용약관 에 동의 합니다. <span class="point_c3">(필수 동의)</span>
+				</p>
+			</div>
+			<!-- //이용약관 -->
+
+			<!-- 개인정보처리방침 -->
+			<div id="agree02" class="agree mat30">
+				<h3 class="stit">개인정보처리방침</h3>
+				<div class="con gudie_table privacy">
+					{% include "guide/privacy_con.html" %}
+				</div>
+				<p class="join_check">
+					<input id="agree2" name="agree2" type="checkbox"  value="radiobutton" required="required" title="개인정보 수집/이용 동의서 에 동의 합니다" alt="개인정보 수집/이용 동의서 에 동의 합니다"/>
+					개인정보처리방침에 동의 합니다. <span class="point_c3">(필수 동의)</span>
+				</p>
+			</div>
+			<!-- //개인정보보호 -->
+		</form>
+
+
+			<!--버튼-->
+			<div class="btn_area">
+				<a href="javascript:void(0);" onclick="form_check()" class="button btn01">확인</a>
+				<a href="/" class="button btn02">취소</a>
+			</div>
+			<!--//버튼-->
+
+
+
+
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+
+
+<script>
+function form_check(){
+	if($('#agree1').is(':checked') && $('#agree2').is(':checked')){
+		location.href = "/Member/Join";
+	} else {
+		alert("약관동의 후 가입하실 수 있습니다.");
+	}
+}
+</script>
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

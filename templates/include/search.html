@@ -1,0 +1,51 @@
+{% load static %}
+<!--레이어:  사이트맵-->
+<div id="search_pop" >
+	<div class="back go_close02" onclick="javascript:void(0);">
+	</div>
+	<div id="search_box">
+		<a href="javascript:void(0);" class="btn_close go_close02"><img src="{% static "img/common/btn_close_white.png" %}"  alt="닫기" /></a>
+
+		<div id="search_con">
+			<div class="layer_area">
+				<ul class="search_list">
+					<li>
+						<dl>
+							<dt>
+								<input type="text" id="keyword" value="{{ request.GET.keyword }}">
+								<img src="{% static "img/common/search_button.png" %}" onclick="location.href='/Portfolio/Project?category=&field=subject&keyword=' + $('#keyword').val();"/>
+							</dt>
+							<dd></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//레이어:  사이트맵-->
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//레이어
+	$(".go_layer02").click(function (){
+		var vol = $(".go_layer02").index(this);
+		$("#search_pop").show(0);
+
+	});
+
+});
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//레이어닫기
+	$(".go_close02").click(function (){
+		var vol = $(".go_close02").index(this);
+		$("#search_pop").hide(0);
+
+	});
+
+});
+</script>

@@ -1,0 +1,204 @@
+{% load static %}
+{% load humanize %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+
+<!-- content -->
+<section class="sub_container mypage" >
+	<div class="wrap">
+		<div class="sub_contents">
+			{% include "include/sub_nav.html" %}
+			<div class="mypage_area">
+
+				{% include "include/title.html" %}
+
+				<div class="sub">
+					{{ user.username }} 님<br>
+					사용하실 솔루션 툴과 기간을 확인 하시고 이용권을 구매 하시면 해당 기간만큼 이용 기간이 늘어납니다.<br>
+				</div>
+
+				<div class="charge">
+					<div class="charge_list">
+						<ul>
+							<li>
+								<dl>
+									<dt>아이디 퍼널(IdFunnel)</dt>
+									<dd>
+										<input name="solution" id="v1m" type="radio" data-name="IdFunnel" data-month="1" value="100000"><label for="v1m">1개월<span>10만원</span></label>
+										<input name="solution" id="v3m" type="radio" data-name="IdFunnel" data-month="3" value="300000"><label for="v3m">3개월<span>30만원</span></label>
+										<input name="solution" id="v6m" type="radio" data-name="IdFunnel" data-month="6" value="600000"><label for="v6m">6개월<span>60만원</span></label>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>쇼핑몰 파인더(ShopFinder)</dt>
+									<dd>
+										<input name="solution" id="s1m" type="radio" data-name="ShopFinder" data-month="1" value="100000"><label for="s1m">1개월<span>10만원</span></label>
+										<input name="solution" id="s3m" type="radio" data-name="ShopFinder" data-month="3" value="300000"><label for="s3m">3개월<span>30만원</span></label>
+										<input name="solution" id="s6m" type="radio" data-name="ShopFinder" data-month="6" value="600000"><label for="s6m">6개월<span>60만원</span></label>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>SNS 파인더(SnsFinder)</dt>
+									<dd>
+										<input name="solution" id="b1m" type="radio" data-name="SnsFinder" data-month="1" value="100000"><label for="b1m">1개월<span>10만원</span></label>
+										<input name="solution" id="b3m" type="radio" data-name="SnsFinder" data-month="3" value="300000"><label for="b3m">3개월<span>30만원</span></label>
+										<input name="solution" id="b6m" type="radio" data-name="SnsFinder" data-month="6" value="600000"><label for="b6m">6개월<span>60만원</span></label>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+					<div class="btn_area">
+						<a href="javascript:void(0);" class="payment_form_submit button btn01" data-method="card">신용카드 결제</a>
+						<a href="javascript:void(0);" class="payment_form_submit button btn02" data-method="phone">스마트폰결제</a>
+					</div>
+				</div>
+
+
+
+				<!-- 충전내역 -->
+
+				<div class="payment_list">
+					<div class="tit_area">
+						<h2>이용권 구매내역</h2>
+						<div class="sub">
+							{{ user.username }} 님께서 구매하신 내역입니다.
+						</div>
+					</div>
+					<div class="basic_table_area">
+						<table>
+							<colgroup>
+								<col width="15%">
+								<col width="15%">
+								<col width="15%">
+								<col width="15%">
+								<col width="40%">
+							</colgroup>
+							<thead>
+								<tr>
+									<td>구매일자</td>
+									<td>구매금액</td>
+									<td>내역</td>
+								</tr>
+							</thead>
+							<tbody>
+{% for data in data %}
+								<tr>
+									<td>{{data.created_at|date:"Y-m-d"}} {{data.created_at|time:"H:i:s"}}</td>
+									<td>{{data.price|intcomma}}</td>
+									<td>{{data.receipt_nm}}</td>
+								</tr>
+{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				{% include "layout/pagination.html" %}
+				<!-- 충전내역 -->
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.4.min.js" type="application/javascript"></script>
+<script>
+function GUID() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+function charge(solution, price, month, receipt_id) {
+	$.ajax({
+		type : "POST",
+		url : "/api/v1/charge",
+		cache : false,
+		data : { "solution" : solution, "price" : price, "month" : month, "receipt_id" : receipt_id },
+		success: function(res) {
+			if(res) {
+				if(res.ok == true) {
+					alert(res.msg);
+					location.reload();
+				} else {
+					alert(res.msg);
+				}
+			} else {
+				alert('예기치 않은 오류가 발생했습니다.');
+			}
+		}
+	});
+}
+
+$(document).ready(function() {
+
+    $(".payment_form_submit").click(function() {
+		var method = $(this).data('method');			// card, phone
+		var solution = $('input[name="solution"]:checked');	//[object Object] 사용안함
+		var solution_price = solution.val();			// 100000
+		var solution_name = solution.data('name');		// IdFunnel, ShopFinder, SnsFinder
+		var solution_month = solution.data('month');	// 1
+
+		if(solution_price==0) {
+			alert('무료 솔루션입니다.');
+			return false;
+		}
+		//alert(method);
+		//return false;
+
+        BootPay.request({
+            price: solution_price, //실제 결제되는 가격
+            application_id: "5ed4af054f74b4002bcab1a7",
+            name: solution_name + ' ' + solution_month + '개월', //결제창에서 보여질 이름
+            pg: 'payletter',
+            method: method, //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+            show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
+            user_info: {
+                username: '{{ member.name }}',
+                email: '{{ user.username }}',
+                addr: '',
+                phone: '{{ member.phone }}'
+            },
+            order_id: GUID(), //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+        }).error(function(data) {
+            //결제 진행시 에러가 발생하면 수행됩니다.
+			alert(data.error);
+            console.log(data);
+        }).cancel(function(data) {
+            //결제가 취소되면 수행됩니다.
+            console.log(data);
+        }).ready(function(data) {
+            // 가상계좌 입금 계좌번호가 발급되면 호출되는 함수입니다.
+            console.log(data);
+        }).confirm(function(data) {
+            console.log(data);
+            var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
+            if (enable) {
+                BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+            } else {
+                BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+            }
+        }).close(function(data) {
+            // 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
+            console.log(data);
+        }).done(function(data) {
+            //결제가 정상적으로 완료되면 수행됩니다
+            //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
+			console.log(data);
+			charge(solution_name, solution_price, solution_month, data.receipt_id);
+        });
+    });
+});
+
+</script>
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

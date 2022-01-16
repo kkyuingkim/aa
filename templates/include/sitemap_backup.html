@@ -1,0 +1,68 @@
+{% load static %}
+<!--레이어:  사이트맵-->
+<div id="sitemap" >
+	<div class="back go_close" onclick="javascript:void(0);">
+	</div>
+	<div id="sitemap_box">
+		<a href="javascript:void(0);" class="btn_close go_close"><img src="{% static "img/common/btn_close_white.png" %}"  alt="닫기" /></a>
+		
+		<div id="sitemap_con">
+			<div class="layer_area">
+				<ul class="sitemap_list">
+{% for main_category in main_categorys %}
+					<li>
+						<dl>
+
+							<dt>
+{% if main_category.link != ""  %}
+								<a href="{{ main_category.link }}" target="_blank">{{ main_category.name }}</a>
+{% else %}
+								<a href="{{ main_category.path }}">{{ main_category.name }}</a>
+{% endif %}
+							</dt>
+
+							<dd>
+{% for sub_category in sub_categorys %}
+{% if sub_category.full_codes.0 == main_category.full_codes.0 and sub_category.name != "개인정보처리방침" %}
+{% if sub_category.link != ""  %}
+								<p><a href="{{ sub_category.link }}" target="_blank">{{ sub_category.name }}</a></p>
+{% else %}
+								<p><a href="{{ sub_category.path }}">{{ sub_category.name }}</a></p>
+{% endif %}
+{% endif %}
+{% endfor %}
+							</dd>
+						</dl>
+					</li>
+{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//레이어:  사이트맵-->
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//레이어
+	$(".go_layer").click(function (){
+		var vol = $(".go_layer").index(this);
+		$("#sitemap").show(0);
+
+	});
+
+}); 
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//레이어닫기
+	$(".go_close").click(function (){
+		var vol = $(".go_close").index(this);
+		$("#sitemap").hide(0);
+
+	});
+
+}); 
+</script>

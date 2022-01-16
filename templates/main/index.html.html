@@ -1,0 +1,590 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="font-family: 'Noto Sans KR', sans-serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>clikker_index_5</title>
+    <link rel="stylesheet" href="{% static 'clipper/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
+    <link rel="stylesheet" href="{% static 'clipper/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/4-Column-Team-Members.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/BS5-Jumbotron-with-background-Image.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Button-Change-Text-on-Hover.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Button-Ripple-Effect-Animation-Wave-Pulse.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Competences-Grid---3-Columns---Hover-Effect-Pop---Icons.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/gradient-navbar-1.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/gradient-navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Header-Blue--Sticky-Header--Smooth-Scroll.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Header-Blue.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Navbar---Apple-1.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Navbar---Apple.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Navbar-Apple.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/navbar-dropdown-multiple-columns.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/NMDIG-Jumbotron-Advanced-Responsive-1.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/NMDIG-Jumbotron-Advanced-Responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Pretty-Footer.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Pretty-Header.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Responsive-Youtube-Embed.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Search-Input-Responsive-with-Icon.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'clipper/assets/css/Video-Responsive-YouTube.css' %}">
+</head>
+
+<body style="font-family: 'Noto Sans KR', sans-serif;">
+    <div id="home" style="font-family: 'Noto Sans KR', sans-serif;">
+        <div class="header-blue">
+            <nav class="navbar navbar-dark navbar-expand-md sticker" style="padding-top:30px;">
+                <div class="container"><a class="navbar-brand" style="font-size:24px;" href="#"><img class="img-fluid" src="{% static 'clipper/assets/img/클리퍼 로고1.png' %}" style="width: 117px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-2">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="#home" target="_top" style="font-size: 15px;font-family: 'Noto Sans KR', sans-serif;">Clippoter<br></a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#home" target="_top" style="font-size: 15px;font-family: 'Noto Sans KR', sans-serif;">Clipvoicer<br></a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#home" target="_top" style="font-size: 15px;font-family: 'Noto Sans KR', sans-serif;">Clipliner</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#home" target="_top" style="font-size: 15px;font-family: 'Noto Sans KR', sans-serif;">플랜구독</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#home" target="_top" style="font-size: 15px;font-family: 'Noto Sans KR', sans-serif;">로그인/회원가입</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container hero" style="border-style: none;">
+                <h1 class="display-6 text-center" style="color: var(--bs-gray-100);font-family: 'Noto Sans KR', sans-serif;">인공지능이 동영상을 빠르고 효과적으로 검색</h1>
+                <p class="lead text-center" style="color: var(--bs-gray-100);margin-top: 30px;">클리퍼와 함께 보다 향상된 동영상 검색을 경험해보세요.<br></p>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="card m-auto" style="max-width: 850px;color: var(--bs-blue);">
+                            <div class="card-body" style="background: rgba(255,255,255,0.27);">
+                                <form class="d-flex align-items-center"><i class="fas fa-search d-none d-sm-block h4 text-body m-0"></i><input class="form-control flex-shrink-1 form-control-borderless" type="search" placeholder="원하는 동영상 정보를 검색해주세요. :  키워드, 채널, 유튜브URL" name="searchbar" style="font-family: 'Noto Sans KR', sans-serif;"><button class="btn btn-dark btn-lg" type="submit" style="width: 100.4844px;font-family: 'Noto Sans KR', sans-serif;">검색</button></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 70px;margin-bottom: 0;">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-xl-flex d-xxl-flex justify-content-xl-center justify-content-xxl-end align-items-xxl-start" style="margin-left: 0px;"><img src="{% static 'clipper/assets/img/header01.png' %}"></div>
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-xl-flex d-xxl-flex justify-content-xl-center justify-content-xxl-center" style="margin-left: 0px;"><img src="{% static 'clipper/assets/img/header02.png' %}"></div>
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-xl-flex d-xxl-flex justify-content-xl-center justify-content-xxl-start" style="margin-left: 0px;"><img class="d-xl-flex d-xxl-flex justify-content-xxl-center" src="{% static 'clipper/assets/img/header03.png' %}"></div>
+            </div>
+        </div>
+    </div>
+    <section style="background: var(--bs-white);margin-top: 60px;">
+        <div class="container hero" style="border-style: none;">
+            <h1 class="display-6 text-center" style="color: var(--bs-gray-dark);font-family: 'Noto Sans KR', sans-serif;font-weight: bold;"><img src="{% static 'clipper/assets/img/icon_1.png' %}" style="width: 77px;margin-right: 19px;">클립포터 추천 영상<br></h1>
+            <p class="lead text-center" style="color: var(--bs-gray-dark);margin-top: 30px;margin-bottom: 60px;">축구 ㅣ파이썬 ㅣ 음악 ㅣ 요리 ㅣ 프로그램 ㅣ 랩<br></p>
+        </div>
+        <div class="row d-xxl-flex justify-content-xxl-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="margin-right: 10px;margin-left: 0;width: 310px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles"><strong>부트스트랩&nbsp;웹 디자인 실전&nbsp;강좌&nbsp;7강</strong><br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>동빈나<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="margin-right: 10px;width: 310px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles"><strong>부트스트랩&nbsp;웹 디자인 실전&nbsp;강좌&nbsp;7강</strong><br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>동빈나<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles"><strong>부트스트랩&nbsp;웹 디자인 실전&nbsp;강좌&nbsp;7강</strong><br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>동빈나<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles"><strong>부트스트랩&nbsp;웹 디자인 실전&nbsp;강좌&nbsp;7강</strong><br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>동빈나<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>시작해 보겠습니다 일단 오늘 할 얘기가 지수함수와 로그 하우스라고. 지수 함수와 로그 함수인데<br><br>야. 일단 내 니들한테 이렇게 물어볼 거야. 야 함수의 꽃이 뭐야. 함수의 꽃 프라 맞아. 그럼 그 녀석은 뭐냐 하면 그래프예요.</p>
+            </div>
+        </div>
+    </section>
+    <section style="background: var(--bs-white);margin-top: 60px;margin-bottom: 60px;">
+        <div class="container hero" style="border-style: none;">
+            <h1 class="display-6 text-center" style="color: var(--bs-gray-dark);font-family: 'Noto Sans KR', sans-serif;font-weight: bold;margin-top: 30px;"><img src="{% static 'clipper/assets/img/icon_2.png' %}" style="width: 77px;margin-right: 19px;">클립보이서 추천 영상<br></h1>
+            <p class="lead text-center" style="color: var(--bs-gray-dark);margin-top: 30px;margin-bottom: 60px;">축구 ㅣ파이썬 ㅣ 음악 ㅣ 요리 ㅣ 프로그램 ㅣ 랩<br></p>
+        </div>
+        <div class="row d-xxl-flex justify-content-xxl-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles">Creating Fully Working Forms Without Any Code<br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>bootstrap studio<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                            <tr>
+                                <td>더빙</td>
+                                <td><i class="fas fa-flag-usa" style="width: 20px;height: 48px;"></i><i class="fa fa-arrow-right" style="width: 20px;"></i><i class="fa fa-star" style="width: 20px;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles">Creating Fully Working Forms Without Any Code<br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>bootstrap studio<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                            <tr>
+                                <td>더빙</td>
+                                <td><i class="fas fa-flag-usa" style="width: 20px;height: 48px;"></i><i class="fa fa-arrow-right" style="width: 20px;"></i><i class="fa fa-star" style="width: 20px;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles">Creating Fully Working Forms Without Any Code<br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>bootstrap studio<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                            <tr>
+                                <td>더빙</td>
+                                <td><i class="fas fa-flag-usa" style="width: 20px;height: 48px;"></i><i class="fa fa-arrow-right" style="width: 20px;"></i><i class="fa fa-star" style="width: 20px;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;">
+                <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                <h1 class="display-6 competencestitles">Creating Fully Working Forms Without Any Code<br></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 89px;">저자</td>
+                                <td>bootstrap studio<br></td>
+                            </tr>
+                            <tr>
+                                <td>채널</td>
+                                <td>유튜브 </td>
+                            </tr>
+                            <tr>
+                                <td>조회수</td>
+                                <td>8.4천회</td>
+                            </tr>
+                            <tr>
+                                <td>영상길이</td>
+                                <td>01:30:12</td>
+                            </tr>
+                            <tr>
+                                <td>추천시간</td>
+                                <td>00:03:11</td>
+                            </tr>
+                            <tr>
+                                <td>분류</td>
+                                <td>수1, 지수, 로그하우스</td>
+                            </tr>
+                            <tr>
+                                <td>더빙</td>
+                                <td><i class="fas fa-flag-usa" style="width: 20px;height: 48px;"></i><i class="fa fa-arrow-right" style="width: 20px;"></i><i class="fa fa-star" style="width: 20px;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="background: var(--bs-white);margin-top: 60px;">
+        <div class="container hero" style="border-style: none;">
+            <h1 class="display-6 text-center" style="color: var(--bs-gray-dark);font-family: 'Noto Sans KR', sans-serif;font-weight: bold;"><img src="{% static 'clipper/assets/img/icon_3.png' %}" style="width: 77px;margin-right: 19px;">클립라이너 추천 영상<br></h1>
+            <p class="lead text-center" style="color: var(--bs-gray-dark);margin-top: 30px;margin-bottom: 60px;">축구 ㅣ파이썬 ㅣ 음악 ㅣ 요리 ㅣ 프로그램 ㅣ 랩<br></p>
+            <div class="row d-xxl-flex justify-content-xxl-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                    <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                    <h1 class="display-6 competencestitles"><br>CSS3 &nbsp;Bootstrap 부트스트랩 파트 1<br></h1>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 89px;">저자</td>
+                                    <td>이동명</td>
+                                </tr>
+                                <tr>
+                                    <td>채널</td>
+                                    <td>유튜브 </td>
+                                </tr>
+                                <tr>
+                                    <td>조회수</td>
+                                    <td>8.4천회</td>
+                                </tr>
+                                <tr>
+                                    <td>영상수</td>
+                                    <td>55편</td>
+                                </tr>
+                                <tr>
+                                    <td>분류</td>
+                                    <td>부트스트랩, CSS3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                    <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                    <h1 class="display-6 competencestitles"><br>CSS3 &nbsp;Bootstrap 부트스트랩 파트 1<br></h1>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 89px;">저자</td>
+                                    <td>이동명</td>
+                                </tr>
+                                <tr>
+                                    <td>채널</td>
+                                    <td>유튜브 </td>
+                                </tr>
+                                <tr>
+                                    <td>조회수</td>
+                                    <td>8.4천회</td>
+                                </tr>
+                                <tr>
+                                    <td>영상수</td>
+                                    <td>55편</td>
+                                </tr>
+                                <tr>
+                                    <td>분류</td>
+                                    <td>부트스트랩, CSS3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;margin-right: 10px;">
+                    <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                    <h1 class="display-6 competencestitles"><br>CSS3 &nbsp;Bootstrap 부트스트랩 파트 1<br></h1>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 89px;">저자</td>
+                                    <td>이동명</td>
+                                </tr>
+                                <tr>
+                                    <td>채널</td>
+                                    <td>유튜브 </td>
+                                </tr>
+                                <tr>
+                                    <td>조회수</td>
+                                    <td>8.4천회</td>
+                                </tr>
+                                <tr>
+                                    <td>영상수</td>
+                                    <td>55편</td>
+                                </tr>
+                                <tr>
+                                    <td>분류</td>
+                                    <td>부트스트랩, CSS3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 competencesboxes" style="width: 310px;">
+                    <div class="video-container"><iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/KSJ7Kfonn7I?loop=1&amp;playlist=KSJ7Kfonn7I" width="853" height="480" style="margin-top: 7px;"></iframe></div>
+                    <h1 class="display-6 competencestitles"><br>CSS3 &nbsp;Bootstrap 부트스트랩 파트 1<br></h1>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 89px;">저자</td>
+                                    <td>이동명</td>
+                                </tr>
+                                <tr>
+                                    <td>채널</td>
+                                    <td>유튜브 </td>
+                                </tr>
+                                <tr>
+                                    <td>조회수</td>
+                                    <td>8.4천회</td>
+                                </tr>
+                                <tr>
+                                    <td>영상수</td>
+                                    <td>55편</td>
+                                </tr>
+                                <tr>
+                                    <td>분류</td>
+                                    <td>부트스트랩, CSS3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 footer-navigation">
+                <h3><a href="#" style="font-family: 'Noto Sans KR', sans-serif;">CLIPPER</a></h3>
+                <p class="links" style="height: 5px;"><a href="#">상호</a><a href="#" style="margin-left: 15px;">(주)차가운</a><strong>&nbsp;</strong></p>
+                <p class="links" style="height: 5px;"><a href="#">대표</a><a href="#" style="margin-left: 15px;">김연섭</a><strong>&nbsp;</strong></p>
+                <p class="links" style="height: 5px;"><a href="#">사업자등록번호</a><a href="#"></a><strong>&nbsp;</strong></p>
+                <p class="company-name">Copyright © Chagaun Inc.<br></p>
+            </div>
+            <div class="col-sm-6 col-md-4 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">서울시 영등포구 시흥대로 589-8</span>2층 204호</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-start"> +82 10-3342-6031</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="#" target="_blank">chagaunnet@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 footer-about">
+                <h4>About US</h4>
+                <p style="height: 20px;">공지사항</p>
+                <p style="height: 20px;">이벤트 안내</p>
+                <p style="height: 20px;">회사소개</p>
+                <p style="height: 20px;">서비스 이용약관</p>
+                <p style="height: 20px;">개인정보 취급방침</p>
+                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'clipper/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'clipper/assets/js/Button-Ripple-Effect-Animation-Wave-Pulse.js' %}"></script>
+    <script src="{% static 'clipper/assets/js/Header-Blue--Sticky-Header--Smooth-Scroll-1.js' %}"></script>
+    <script src="{% static 'clipper/assets/js/Header-Blue--Sticky-Header--Smooth-Scroll.js' %}"></script>
+    <script src="{% static 'clipper/assets/js/Navbar---Apple.js' %}"></script>
+</body>
+
+</html>

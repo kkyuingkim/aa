@@ -1,0 +1,59 @@
+#ipi-table > thead > tr, #ipi-table > thead > tr > td {
+  font-size: .9em;
+  font-weight: 400;
+  background: #51596a;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+#ipi-table > tbody > tr > td {
+  max-height: 200px;
+  vertical-align: middle!important;
+}
+
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus {
+  outline: none;
+}
+
+a, area, button, input, label, select, summary, textarea {
+  touch-action: manipulation;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+span {
+  font-size: 12px;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #FF4B2B;
+  background-color: #FF4B2B;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+

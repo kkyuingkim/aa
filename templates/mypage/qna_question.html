@@ -1,0 +1,153 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+{% include "include/sub_nav.html" %}
+
+{% if inquiry and inquiry.answer != '' %}
+<script>
+alert('이미 처리된 문의입니다.');
+history.back();
+</script>
+{% endif %}
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		{% include "include/title.html" %}
+		<div class="sub_contents">
+
+			<!-- <p class="info_tit mab50">
+				궁금하신 점이 있으시면 언제라도 연락주십시오. 확인 후, 바로 연락드릴 수 있도록 하겠습니다.
+			</p> -->
+			<div class="sub_box mi50  wow fadeInUp">
+				<p class="tit">언제든지 <span class="point_c1">'차가운' AI 마케팅연구소</span>에 <br>문의하세요.</p>
+				<p class="sub_txt">
+					저희 차가운 AI 마케팅연구소는 오직 기술과 품질로써 고객들에게 만족을 드리고자 노력하며, 고객의 성공적인 비즈니스를 위해 최선을 다하겠습니다.<br>
+					궁금하신 점이 있으시면 언제라도 연락주십시오.	확인 후, 바로 연락드릴 수 있도록 하겠습니다.
+				</p>
+			</div>
+
+			<form name="inquiry_form" id="inquiry_form">
+			{% if inquiry %}
+				<input type="hidden" name="id" value="{{ inquiry.id }}" />
+			{% endif %}
+			<div class="info_form  wow fadeInUp">
+				<dl>
+					<dt>솔루션<span>*</span></dt>
+					<dd>
+						<select name="solution" id="solution" required="required" title="솔루션을 선택해주세요.">
+							<option value="">솔루션을 선택해주세요.</option>
+							<option value="아이디검증" {% if inquiry and inquiry.solution == "아이디검증" %}selected{% endif %} >아이디검증</option>
+							<option value="쇼핑솔루션" {% if inquiry and inquiry.solution == "쇼핑솔루션" %}selected{% endif %}>쇼핑솔루션</option>
+							<option value="SNS솔루션" {% if inquiry and inquiry.solution == "SNS솔루션" %}selected{% endif %}>SNS솔루션</option>
+							<option value="기타" {% if inquiry and inquiry.solution == "기타" %}selected{% endif %}>기타</option>
+						</select>
+					</dd>
+				</dl>
+				<dl>
+					<dt>문의유형<span>*</span></dt>
+					<dd>
+						<select name="category" id="category" required="required" title="유형을 선택해주세요.">
+							<option value="">유형을 선택해주세요.</option>
+							<option value="일반문의" {% if inquiry and inquiry.category == "일반문의" %}selected{% endif %}>일반문의</option>
+							<option value="제안요청" {% if inquiry and inquiry.category == "제안요청" %}selected{% endif %}>제안요청</option>
+							<option value="버그신고" {% if inquiry and inquiry.category == "버그신고" %}selected{% endif %}>버그신고</option>
+							<option value="탈퇴신청" {% if inquiry and inquiry.category == "탈퇴신청" %}selected{% endif %}>탈퇴신청</option>
+							<option value="기타" {% if inquiry and inquiry.category == "기타" %}selected{% endif %}>기타</option>
+						</select>
+					</dd>
+				</dl>
+				<dl>
+					<dt>작성자명<span>*</span></dt>
+					<dd><input type="text" name="name" id="type" placeholder="이름을 입력해주세요."  required="required" title="이름을 입력해주세요." value="{% if inquiry %}{{ inquiry.name }}{% endif %}"></dd>
+				</dl>
+				<dl>
+					<dt>연락처</dt>
+					<dd><input type="text" name="phone" id="phone" placeholder="ex) 010-1234-5678" title="연락처를 입력해주세요." value="{% if inquiry %}{{ inquiry.phone }}{% endif %}"></dd>
+				</dl>
+				<dl>
+					<dt>이메일<span>*</span></dt>
+					<dd><input type="text" name="email" id="email" placeholder="ex) chagaunnet@gmail.com" required="required" title="이메일을 입력해주세요." value="{% if inquiry %}{{ inquiry.email }}{% endif %}"></dd>
+				</dl>
+				<dl>
+					<dt>문의내용<span>*</span></dt>
+					<dd><textarea name="comment" name="comment" id="comment" rows="8" cols="80" required="required" title="문의내용을 입력해주세요.">{% if inquiry %}{{ inquiry.comment }}{% endif %}</textarea></dd>
+				</dl>
+				<dl id="file0" {% if inquiry and inquiry.category == "버그신고" %}{% else %} style="display:none;"{% endif %}>
+					<dt>첨부파일<span></span></dt>
+					<dd>
+						<input type="file" name="file0" value="파일찾기" >
+						{% if inquiry and inquiry.file0 %}<a href="{{ inquiry.file0.url }}" download class="button btn01">다운로드</a>{% endif %}
+					</dd>
+				</dl>
+			</div>
+
+			<div class="gudie mat50">
+				<p>개인정보의 수집 및 이용동의</p>
+				<div class="agree2">
+					<div>
+						차가운 AI 마케팅연구소 문의하기 답변을 위해 개인정보수집 및 이용에 동의해주시기 바랍니다.<br>
+						<span>*</span>수집항목 - 이름, 연락처, 이메일<br>
+						<span>*</span>이용목적 - 문의하기 답변<br>
+						문의하기 외 목적으로 사용하지 않습니다.<br>
+						<span>*</span>이용/보관기간 - 고객은 동의를 거부할 수 있으며 동의 거부 시에는 문의하기 서비스 이용이 불가합니다.<br>
+						- 수집한 개인정보는 고객이 파기 요청이 있을 때 까지 보관하며 파기 요청 시 즉시 파기합니다.
+					</div>
+				</div>
+				<div class="chk">
+					<input type="checkbox" id="cb1" name="agree" required="required" title="개인정보 수집 및 취급방침을 확인해주세요.">
+	 				<label for="cb1"></label>
+					<!-- <input name="policy" title="개인정보 수집 및 취급방침에 동의해주십시오." id="policy" required="required" type="checkbox" value="1"> -->
+					개인정보 수집 및 취급방침에 동의합니다.
+				</div>
+
+			</div>
+			</form>
+			<div class="btn_area mat50">
+				<a href="javscript:void(0);" id="inquiry_form_submit" class="button btn01">문의하기</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+<script type="text/javascript" src="{% static "js/validate.js" %}"></script>
+<script>
+	$("select[name='category']").change(function(){
+	    var category = $(this).val();
+	    if(category == '버그신고')  {
+		$('#file0').css('display','');
+	    } else {
+  		$('#file0').css('display','none');
+	    }
+	});
+	$("#inquiry_form_submit").click(function(){
+		if(validate('#inquiry_form')==false) return;
+
+		//var form_data = $("#inquiry_form").serialize();
+		var form_data = new FormData(inquiry_form);
+		$.ajax({
+			type : "POST",
+			url : "/api/v1/inquiry",
+			cache: false,
+			data: form_data,
+			processData: false,
+			contentType: false,
+			success: function(res) {
+				if(res) {
+					if(res.ok == true) {
+						alert(res.msg);
+						location.reload();
+					} else {
+						alert(res.msg);
+					}
+				} else {
+					alert('예기치 않은 오류가 발생했습니다.');
+				}
+			}
+		});
+	});
+</script>
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

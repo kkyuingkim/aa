@@ -1,0 +1,124 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+
+<!-- content -->
+<section class="sub_container mypage">
+	<div class="wrap">
+		<div class="sub_contents">
+			{% include "include/sub_nav.html" %}
+			<div class="mypage_area">
+
+				{% include "include/title.html" %}
+
+				<div class="sub">
+					회원님이 문의하신 내역입니다. 구매.환불과 관련한 문의를 하실 수 있습니다.
+				</div>
+
+{% if request.GET.id is None %}
+				<!-- 문의리스트 -->
+				<div class="board_list mat20 mab20">
+{% for data in data %}
+					<a href="/Mypage/QnA?id={{ data.id }}&m=v">
+						<li>
+							<dl>
+								<dt>
+									{% if data.answer == '' %}<p class="wa"><span>답변</span>대기</p>{% else %}<p class="ans"><span>답변</span>완료</p>{% endif %}
+								</dt>
+								<dd>
+									<p class="title">
+										[{{ data.solution }}/{{ data.category }}] - {{ data.comment | safe | striptags | slice:":20" }}
+									</p>
+									<div>{{ data.created_at|date:"Y.m.d" }}</div>
+								</dd>
+							</dl>
+						</li>
+					</a>
+{% endfor %}
+				</div>
+				<div class="btn_area">
+					<a href="/Contact/QnA" class="button btn01">문의</a>
+
+				</div>
+
+
+				<!-- 문의리스트 -->
+				{% include "layout/pagination.html" %}
+
+{% else %}
+				<!-- 디테일페이지 -->
+				<div class="board_detail">
+					<li>
+						<dl>
+							<dt>
+								{% if data.answer == '' %}<p class="ans"><span>답변</span>대기</p>{% else %}<p class="ans"><span>답변</span>완료</p>{% endif %}
+								<div>{{ data.created_at|date:"Y.m.d" }}</div>
+							</dt>
+							<dd>
+								<div>
+									<p>솔루션</p>
+									<p class="txt">{{ data.solution }}</p>
+								</div>
+								<div>
+									<p>문의유형</p>
+									<p class="txt">{{ data.category }}</p>
+								</div>
+								<div>
+									<p>작성자명</p>
+									<p class="txt">{{ data.name }}</p>
+								</div>
+								<div>
+									<p>연락처</p>
+									<p class="txt">{{ data.phone }}</p>
+								</div>
+								<div>
+									<p>이메일</p>
+									<p class="txt">{{ data.email }}</p>
+								</div>
+								<div>
+									<p>문의내용</p>
+									<p class="txt w100">
+										{{ data.comment | linebreaks | safe | striptags  }}
+									</p>
+								</div>
+								{% if data.file0 %}
+								<div>
+									<p>첨부파일</p>
+									<p class="txt"><a href="{{ data.file0.url }}" download class="download">다운로드</a></p>
+								</div>
+								{% endif %}
+							</dd>
+							{% if data.answer != '' %}
+							<dd class="ans">
+								<span class="tit">
+									<i class="ico_myprofile"></i>관리자
+								</span>
+								<span class="text">
+									{{ data.answer | linebreaks }}
+								</span>
+							</dd>
+							{% endif %}
+						</dl>
+					</li>
+				</div>
+
+				<div class="btn_area">
+					<a href="/Mypage/QnA" class="button btn01">전체목록</a>
+					{% if data.answer == '' and data.user.username == request.user.username %}
+					<a href="/Contact/QnA?id={{ data.id }}" class="button btn02">수정하기</a>
+					{% endif %}
+				</div>
+				<!-- 디테일페이지 -->
+{% endif %}
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

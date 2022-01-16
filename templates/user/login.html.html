@@ -1,0 +1,167 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+
+<!DOCTYPE html>
+<html style="font-family: 'Noto Sans KR', sans-serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="{% static 'login/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cardo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&amp;display=swap">
+    <link rel="stylesheet" href="{% static '/all.css' %}">
+    <link rel="stylesheet" href="{% static 'login/assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'login/assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'login/assets/css/styles.min.css' %}">
+    <link rel="stylesheet" href="{% static '/baguetteBox.min.css' %}">
+    <link rel="stylesheet" href="{% static '/theme.bootstrap_4.min.css' %}">
+    <link rel="stylesheet" href="{% static '/jquery-ui.min.css' %}">
+</head>
+
+<body style="font-family: 'Noto Sans KR', sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-lg bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#"><img src="{% static 'login/assets/img/클리퍼 로고1.png' %}" style="width: 150px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;text-decoration: underline;font-weight: bold;">PORTER</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Voicer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Liner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;">Trailer</a></li>
+                    <li class="nav-item"><span class="fa-stack"><i class="fas fa-user fa-stack-2x"></i></span></li>
+                    <li class="nav-item"><span class="fa-stack"><i class="fas fa-shopping-basket fa-stack-2x"></i></span></li>
+                    <li class="nav-item"><a class="nav-link" href="../clipporter/clipporter_main.html" style="font-family: 'Noto Sans KR', sans-serif;text-decoration:  underline;">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="sub_container" >
+        <div class="wrap">
+            <div class="sub_contents">
+                <form id="login_form">
+                <div class="login_box">
+                    <form id="loginForm" name="loginForm" method="POST" action="/">
+                    <input type="hidden" name="smode" id="smode">
+                    <div>
+                        <ul>
+                            <li>
+                                <input name="email" type="text" value="" placeholder="아이디(이메일)" title="아이디를 입력해주세요." required="required">
+                            </li>
+                            <li>
+                                <input name="password" type="password" value="" placeholder="비밀번호" title="비밀번호를 입력해주세요." required="required">
+                            </li>
+                        </ul>
+                        <div class="btn_login">
+                            <a href="javascript:void(0);" id="login_form_submit">로그인</a>
+                        </div>
+                    </div>
+                    <div class="more_btn">
+                        <span><a href="/Member/IDPW" title="비번찾기">비밀번호 찾기</a></span>
+                    </div>
+                    </form>
+
+                    <div class="member_guide">
+
+                        <p class="btn_join">
+                            <a href="/Member/Agree"><input type="button" value="회원가입"></a>
+                        </p>
+
+                        <p>회원님의 아이디, 비밀번호를 입력하시기 바랍니다.</p>
+                        <p>보안프로그램 미사용 선택 시, 고객님의 정보가 암호화되지 않습니다.</p>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="lgp-hd">
+            <h2><strong>로그인</strong></h2>
+            <h5><strong>CLIPPER LOGIN</strong></h5>
+        </div>
+        <div class="container login-cont">
+            <div class="row">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4 offset-1 offset-sm-3 offset-md-4 offset-lg-4 login-col"><i class="fa fa-user" style="font-size: 70px;color: var(--bs-white);"></i>     
+                    <form id="login_form">
+                        <form id="loginForm" name="loginForm" method="POST" action="/">     
+                            <form id="login_form" name="loginForm" method="POST" action="/">
+                            <div class="form-group mb-3"><input class="form-control form-control-lg lg-frc" type="text" required="" placeholder="아이디(이메일)"></div>
+                            <div class="form-group mb-3"><input class="form-control form-control-lg lg-frc" type="password" required="" placeholder="비밀번호"></div>
+                            <div class="form-group mb-3"><button class="btn_login" type="submit"><a href="javascript:void(0);" id="login_form_submit">로그인</a></button></div>
+                            <div class="form-group mb-3"><button class="more_btn" type="submit"><span><a href="/Member/IDPW" title="비번찾기">비밀번호 찾기</a></span></button></div>
+                            <div class="form-group mb-3">
+                                <div class="member_guide">
+
+                                    <p class="btn_join">
+                                        <a href="/Member/Agree"><input type="button" value="회원가입"></a>
+                                    </p>
+                
+                                    <p>회원님의 아이디, 비밀번호를 입력하시기 바랍니다.</p>
+                                    <p>보안프로그램 미사용 선택 시, 고객님의 정보가 암호화되지 않습니다.</p>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript" src="{% static "js/validate.js" %}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+
+// 이메일 체크 정규식
+function chkEmail(asValue) {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
+}
+
+
+$(document).ready(function() {
+
+
+        $("#login_form_submit").click(function(){
+
+            if(validate('#login_form')==false) return;
+
+	    var email = $("input[name='email']").val();
+
+	    if(chkEmail(email) == false) {
+		alert('이메일 주소를 확인해주세요.');
+		return false;
+	    }
+
+	    var form_data = $("#login_form").serialize();
+
+            $.ajax({
+                type : "POST",
+                url : "/api/v1/login",
+                cache : false,
+                data : form_data,
+                success: function(res) {
+		    if(res) {
+			if(res.ok == true) {
+			    location.replace('/');
+			} else {
+			    alert(res.msg);
+			}
+		    } else {
+			alert('예기치 않은 오류가 발생했습니다.');
+		    }
+                }
+            });
+        });
+});
+</script>
+
+</html>
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

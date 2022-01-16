@@ -1,0 +1,1791 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html  dir="ltr" lang="ko" xml:lang="ko" class="html_login">
+<head>
+    <title>LearnUs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv='Cache-Control' content='no-cache' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi" />
+    <meta name="keywords" content="moodle, coursemos, 코스모스">
+    <link rel="shortcut icon" href="https://www.learnus.org/theme/image.php/coursemosv2/theme/1636445794/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, LearnUs" />
+<link rel="stylesheet" type="text/css" href="{% static 'learnus/assets/css/yui-moodlesimple-min.css' %}" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://www.learnus.org/theme/styles.php/coursemosv2/1636445794_1/all" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/www.learnus.org","sesskey":"i8DIQeD5lA","themerev":"1636445794","slasharguments":1,"theme":"coursemosv2","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1636445794","admin":"admin","svgicons":true,"usertimezone":"\uc544\uc2dc\uc544\/\uc11c\uc6b8","contextid":1,"lang":"ko"};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/www.learnus.org\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/www.learnus.org\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/www.learnus.org\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/www.learnus.org\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/www.learnus.org\/theme\/yui_combo.php?m\/1636445794\/","combine":true,"comboBase":"https:\/\/www.learnus.org\/theme\/yui_combo.php?","ext":false,"root":"m\/1636445794\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-formautosubmit":{"requires":["base","event-key"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-calendar-info":{"requires":["base","node","event-mouseenter","event-key","overlay","moodle-calendar-info-skin"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-toolboxes":{"requires":["node","base","event-key","node","io","moodle-course-coursebase","moodle-course-util"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-core_message-messenger":{"requires":["escape","handlebars","io-base","moodle-core-notification-ajaxexception","moodle-core-notification-alert","moodle-core-notification-dialogue","moodle-core-notification-exception"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-quizquestionbank":{"requires":["base","event","node","io","io-form","yui-later","moodle-question-qbankmanager","moodle-core-notification-dialogue"]},"moodle-mod_quiz-randomquestion":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_textbook-searchdialogue":{"requires":["base","panel","node","event","io-base","json-parse","moodle-core-notification"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-block_navigation-navigation":{"requires":["base","io-base","node","event-synthetic","event-delegate","json-parse"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_coursemosvimeo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_fullscreen-button":{"requires":["event-resize","moodle-editor_atto-plugin"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_pasteimage-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_wiris-button":{"requires":["moodle-editor_atto-plugin","get"]}}},"gallery":{"name":"gallery","base":"https:\/\/www.learnus.org\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/www.learnus.org\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1636445794\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/www.learnus.org\/lib\/javascript.php\/1636445794\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/www.learnus.org\/lib\/javascript.php\/1636445794\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="연세대학교 스마트 교육플랫폼 LearnUs" />
+<meta property="description" content="포스트 코로나 시대, 온라인 교육을 선도하는 대학 비대면, 온라인 강의를 위한 연세대학교의 교육혁신 플랫폼" />
+<meta property="og:description" content="포스트 코로나 시대, 온라인 교육을 선도하는 대학 비대면, 온라인 강의를 위한 연세대학교의 교육혁신 플랫폼" />
+<meta property="og:image" content="null" />
+<meta property="og:url" content="https://open.yonsei.ac.kr" />
+<meta name="naver-site-verification" content="5d44b5cbe9d052fc39a939186bb649e2d3626f8f" />
+
+<link rel="stylesheet" href="{% static 'learnus/assets/css/xeicon.min.css' %}">
+<link rel="stylesheet" href="{% static 'learnus/assets/css/iziModal.min.css' %}">
+<style type="text/css">.mform .fitem .felement select, select.form-control { transition: none !important; -webkit-transition: none !important;}</style>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'{% static 'learnus/assets/js/gtm.js' %}'+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DWRQCT');</script>
+<!-- End Google Tag Manager --></head>
+
+<body id="page-site-index-search" class="loginpage search format-site  path-site path-site-index safari dir-ltr lang-ko yui-skin-sam yui3-skin-sam www-learnus-org pagelayout-login course-1 context-1 notloggedin">
+<div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">주 내용으로 가기</a>
+</div><script type="text/javascript" src="{% static 'learnus/assets/js/yui-moodlesimple-min.js' %}"></script><script type="text/javascript" src="{% static 'learnus/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'learnus/assets/js/javascript-static.js' %}"></script>
+<script type="text/javascript" src="{% static 'learnus/assets/js/head.js' %}"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<script type="text/javascript" src="{% static 'learnus/assets/js/flexiblepage_cm35.js' %}"></script><div role="main"><span id="maincontent"></span><div id="page">
+	<div id="page-header" class="headroom fixed-top">
+	    <div class="main-header page-util">
+	        <div class="login-container">
+	            <div class="family-sites">
+	            </div>
+	            <div class="usermenu">
+	                <div class="lang"><div class="dropdown dropdown-lang mt-3"><a id="user-info-lang" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">한국어 ‎(ko)‎</a><div class="dropdown-menu" aria-labelledby="user-info-lang"><a href="https://www.learnus.org/search.php?keyword=AI&amp;enrol_start=&amp;enrol_end=&amp;study_start=&amp;study_end=&amp;lang=en" title="English ‎(en)‎" class="a-lang dropdown-item" data-lang="en">English ‎(en)‎</a><a href="https://www.learnus.org/search.php?keyword=AI&amp;enrol_start=&amp;enrol_end=&amp;study_start=&amp;study_end=&amp;lang=ko" title="한국어 ‎(ko)‎" class="a-lang dropdown-item" data-lang="ko">한국어 ‎(ko)‎</a></div></div></div><ul class="nav nav-pills nav-user" role="tablist"><li role="presentation" class="nav-item nav-item-login"><a href="https://www.learnus.org/login/register/register_agree.php" class="btn btn-login btn-join">회원가입</a><a href="https://www.learnus.org/login/index.php" class="btn btn-sm btn-loginout">로그인</a></li></ul>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="main-header-menu page-menu navbar navbar-dark">
+	        <div class="menu-container">
+	            <button type="button" class="navbar-toggler">
+	                <span class="navbar-toggler-icon"></span>
+	            </button>
+	            <div class="logo">
+	                <a href="https://www.learnus.org" class="logo-chagaun">
+                        <img src="{% static 'search/assets/img/logo_chagaun_white.png' %}" alt="">
+	                </a>
+	            </div>
+	            <div class="site-menus">
+	                <div class="">
+	                    <div class="">
+	                        <ul class="menu-list">
+	                            <li class="menu-item" title="전문과정">
+	                                <a href="https://www.learnus.org/local/ubonline/index.php?group=1" class="site-menu-link nosubmenu">
+	                                    <i class="fa site-menu-icon fa-users" aria-hidden="true"></i>
+	                                    <div class="menu-name">전문과정</div>
+	                                </a>
+	                            </li>
+	                            <li class="menu-item" title="공개과정">
+	                                <a href="https://www.learnus.org/local/ubonline/open.php" class="site-menu-link nosubmenu">
+	                                    <i class="fa site-menu-icon fa-globe" aria-hidden="true"></i>
+	                                    <div class="menu-name">공개과정</div>
+	                                </a>
+	                            </li>
+	                            <li class="menu-item" title="국제과정">
+	                                <a href="https://www.learnus.org/local/ubonline/index.php?group=3" class="site-menu-link nosubmenu">
+	                                    <i class="fa site-menu-icon fa-play-circle-o" aria-hidden="true"></i>
+	                                    <div class="menu-name">국제과정</div>
+	                                </a>
+	                            </li>
+	                            <li class="menu-item" title="학위과정">
+	                                <a href="https://www.learnus.org/local/ubion/user/index.php" class="site-menu-link nosubmenu">
+	                                    <i class="fa site-menu-icon fa-graduation-cap" aria-hidden="true"></i>
+	                                    <div class="menu-name">학위과정</div>
+	                                </a>
+	                            </li>
+	                            <li class="menu-item" title="이용안내">
+	                                <a href="https://www.learnus.org/mod/ubboard/view.php?id=" class="site-menu-link nosubmenu">
+	                                    <i class="fa site-menu-icon fa-globe" aria-hidden="true"></i>
+	                                    <div class="menu-name">이용안내</div>
+	                                </a>
+	                            </li> 
+	                            <a href="#" class="btn-search" id="btn-search"></a>
+	                        </ul>
+	                    </div>
+	                    
+	                </div>
+	                <!--
+	                <div class="site-menu-close">
+	                    <i class="fa fa-times" id="yui_3_17_2_1_1578039202793_138"></i>
+	                </div>
+	                -->
+	            </div>
+	        </div>
+	
+	        <div id="search_slide">
+	            <div class="container">
+	                <form id="simple-search" method="get" action="https://www.learnus.org/search.php">
+	                    <input type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요.">
+	                    <button type="submit" class="btn btn-search">검색</button>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	
+	    <div class="top-notice">
+	        <div class="swiper-container swiper-notice">
+	            <div class="swiper-wrapper">
+	                    <div class="swiper-slide">
+	                        <div class="row login-container">
+	                            <a href="https://www.learnus.org/mod/ubboard/article.php?id=2009295&amp;bwid=453388" class="">신촌캠퍼스 유선네트워크 일시중지 안내</a> <a href="#" class="btn-close notice-close">닫기<span></span></a>                            
+	                        </div>
+	                    </div>
+	                    <div class="swiper-slide">
+	                        <div class="row login-container">
+	                            <a href="https://www.learnus.org/mod/ubboard/article.php?id=2009295&amp;bwid=448556" class="">LearnUs 11월 이벤트 안내</a> <a href="#" class="btn-close notice-close">닫기<span></span></a>                            
+	                        </div>
+	                    </div>
+	                    <div class="swiper-slide">
+	                        <div class="row login-container">
+	                            <a href="https://www.learnus.org/mod/ubboard/article.php?id=2009295&amp;bwid=439175" class="">2021학년도 교육수요자만족도 조사(Yonsei University Student Satisfaction Survey)</a> <a href="#" class="btn-close notice-close">닫기<span></span></a>                            
+	                        </div>
+	                    </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>        
+    <div class="main-notice">
+        <div class="login-container">
+                
+        </div>
+	</div>
+    
+    <div id="page-content-search">
+        <form class="form-content-search" id="search-form" action="https://www.learnus.org/search.php" method="get">
+            <!--<input type="hidden" name="search" value="1" />-->
+            <div class="login-container search-box">            
+                <div class="search-title">
+                    Search
+                </div>
+                <div class="search-input">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요." value="ai" />                        
+                        <div class="input-group-append">                            
+                            <button type="submit" class="btn btn-default btn-submit">검색</button>
+                            <button type="button" class="btn btn-default btn-submit btn-detail">상세 검색</button>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="login-container search-detail">
+                        <div class="form-horizontal">
+                            <div class="form-group">						
+                                <label class="col-sm-3 col-form-label">강좌그룹</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="groups[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="groups[]" value="1" >
+                                        <label class="form-check-label">전문과정</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="groups[]" value="3" >
+                                        <label class="form-check-label">국제과정</label>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">교육과정</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="1" >
+                                        <label class="form-check-label">교양강좌</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="2" >
+                                        <label class="form-check-label">수료강좌</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="3" >
+                                        <label class="form-check-label">명품강좌</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="4" >
+                                        <label class="form-check-label">국제강좌</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="progress[]" value="5" >
+                                        <label class="form-check-label">직원교육강좌</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">학문분야</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="1" >
+                                        <label class="form-check-label">인문</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="2" >
+                                        <label class="form-check-label">사회</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="3" >
+                                        <label class="form-check-label">교육</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="4" >
+                                        <label class="form-check-label">공학</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="5" >
+                                        <label class="form-check-label">자연</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="6" >
+                                        <label class="form-check-label">의약</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="7" >
+                                        <label class="form-check-label">예체능</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="8" >
+                                        <label class="form-check-label">융복합</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="category[]" value="9" >
+                                        <label class="form-check-label">기타</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">주제</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="1" >
+                                        <label class="form-check-label">최신기술</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="2" >
+                                        <label class="form-check-label">경영·경제</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="3" >
+                                        <label class="form-check-label">사회·문화</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="4" >
+                                        <label class="form-check-label">문학·역사·철학</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="5" >
+                                        <label class="form-check-label">건축·디자인</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="6" >
+                                        <label class="form-check-label">건강</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="7" >
+                                        <label class="form-check-label">언어 학습</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="8" >
+                                        <label class="form-check-label">직무교육</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="subject[]" value="9" >
+                                        <label class="form-check-label">연세대 소개</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">상태</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="state[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="state[]" value="1" >
+                                        <label class="form-check-label">전체</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="state[]" value="2" >
+                                        <label class="form-check-label">진행중</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="state[]" value="3" >
+                                        <label class="form-check-label">종료</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">언어</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="langs[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="langs[]" value="en" >
+                                        <label class="form-check-label">English ‎(en)‎</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="langs[]" value="ko" >
+                                        <label class="form-check-label">한국어 ‎(ko)‎</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">유료여부</label>
+                                <div class="col-sm-9 control-label">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="pay[]" value="all" >
+                                        <label class="form-check-label">모두선택</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="pay[]" value="1" >
+                                        <label class="form-check-label">유료</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="pay[]" value="0" >
+                                        <label class="form-check-label">무료</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">수강신청기간</label>
+                                <div class="col-sm-9 control-label">
+                                    <input type="text" name="enrol_start" class="form-control form-datepicker text-center" value="" placeholder="시작일"> ~ 
+                                    <input type="text" name="enrol_end" class="form-control form-datepicker text-center" value="" placeholder="종료일">
+                                </div>
+                            </div>                    
+                            <div class="form-group">
+                                <label class="col-sm-3 col-form-label">학습기간</label>
+                                <div class="col-sm-9 control-label">
+                                    <input type="text" name="study_start" class="form-control form-datepicker text-center" value="" placeholder="시작일"> ~ 
+                                    <input type="text" name="study_end" class="form-control form-datepicker text-center" value="" placeholder="종료일">
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-default reload_btn" ><i class="fa fa-undo" aria-hidden="true"></i> 초기화</button>
+                                <button type="button" class="btn btn-default detail_btn detail_btn_close"><i class="up_down_icon fa fa-close" aria-hidden="true"></i> 닫기</button>
+                            </div>
+                        </div>
+                
+            </div>
+        </form>   
+    </div>    
+    <div id="page-content" class="clearfix">
+		<div id="region-main">
+            <div class="login-container">
+                <div class="course-latest">
+                    <div class="latest-header">                        
+                        <h3 class="latest-title">
+                            전문과정
+                        </h3>
+                        <div class="course-button-box">
+                            <span class="contents_count">총 <span class="total-count">51</span>개</span>
+                            <a href="https://www.learnus.org/local/ubonline/index.php?group=1&amp;keyword=AI&amp;enrol_start=&amp;enrol_end=&amp;study_start=&amp;study_end=&amp;lang=ko" class="btn btn-primary btn-search-more">더보기</a>
+                        </div>
+                    </div>
+                    <div class="latest-lists">
+                        <div class="search-course-list">
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=206635&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                도경선
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-10-28 ~ 2022-08-31</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강좌 요약]
+예비 대학생~대학 신입생을 대상으로 대학공부의 특성과 의미, 방법에 대해 개괄적으로 이해시킴으로써 성공적인 대학 1학년을 보내도록 지원한다.
+ 
+[강좌 목적 및 필요성]
+대학진학율이 OECD 최상위권인 한국 고등학생들은 대학진학이라는 당연한 목표 앞에 대학이 고등교육기관으로 어떤 기능을 하고 있으며 대학에서의 교육이 어떤 의미가 있을지 자문할 기회가 별로 없었다. 또한 정해진 방식과 틀의 수험공부에 길들여져 주체적이고 독립적인 대학에서의 공부 수행에 어려움을 겪기도 한다. 이 강좌는 ‘대학에서의 공부가 고등학교와 어떻게 다른지’, 학생들이 부차적이라고 생각하는 교양공부를 중심으로 ‘왜 공부하는지’, 그리고 ‘잘 공부하는 법’에 대한 개괄을 통해 자기주도적인 대학 신입생이 될 수 있도록 돕는다.
+ 
+[교수자 소개]
+연세대학교 도경선 학사지도교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 10 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/공통과정 25번_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/3/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="예비 대학생과 신입생을 위한 대학에서의 공부 배우기">
+                                            예비 대학생과 신입생을 위한 대학에서의 공부 배우기
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-10-28 ~ 2022-08-31">
+                                            2021-10-28 ~ 2022-08-31
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197599&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                문두철
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+기업의 지속가능성을 높이기 위한 ESG(Environmental·Social·Governance)의 개념을 설명하고, ESG 점수가 평가기관별로 상이한 이유를 설명합니다.
+ 
+[교수진 소개]
+연세대학교 경영대학 문두철 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 115 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_10_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 10. ESG 이해하기">
+                                            [한국의 경제와 기업경영 이슈들] 10. ESG 이해하기
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197598&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                강기윤
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약] 
+가상화폐와 블록체인의 작동 원리에 대해 소개합니다.
+ 
+[교수진 소개]
+연세대학교 경영대학 강기윤 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 134 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_09_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 9. 가상화폐와 블록체인경제">
+                                            [한국의 경제와 기업경영 이슈들] 9. 가상화폐와 블록체인경제
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197597&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                최순규
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+현대자동차의 성장 및 국제화 과정을 통하여 한국적 경영의 특징과 강점 소개합니다
+ 
+[교수진 소개]
+연세대학교 경영대학 경영학과 최순규 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 39 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_08_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 8. 현대자동차로부터 배우는 K-경영">
+                                            [한국의 경제와 기업경영 이슈들] 8. 현대자동차로부터 배우는 K-경영
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197596&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                박경민
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+경쟁우위의 의미에 대해 개념 설명과 예시를 통하여 설명하고자 합니다.
+ 
+[교수진 소개]
+연세대학교 경영대학 경영학과 박경민 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 92 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_07_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 7. 경쟁우위란 무엇인가?">
+                                            [한국의 경제와 기업경영 이슈들] 7. 경쟁우위란 무엇인가?
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197594&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                김현중
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+현대사회에서 발생하는 빅데이터를 분석하는 것이 왜 중요한 것인지를 설명하고, 이를 분석하기 위한 학문에 대한 개괄적인 안내를 하여, 데이터사이언스를 통해 기업 및 개인의 미래 경쟁력을 제고하도록 하고자 합니다.
+ 
+[교수진 소개]
+연세대학교 상경대학 응용통계학과 김현중 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 49 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_05_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/5/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 5. 데이터사이언스 소개">
+                                            [한국의 경제와 기업경영 이슈들] 5. 데이터사이언스 소개
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197593&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                박기영
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+공매도에 대한 오해를 해소하고 공매도의 기능에 대해 이해함으로써 금융독해력을 높이는 강좌입니다.
+ 
+[교수진 소개] 
+연세대학교 상경대학 경제학부 박기영 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 99 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_04_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 4. 공매도의 이해">
+                                            [한국의 경제와 기업경영 이슈들] 4. 공매도의 이해
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197592&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                한순구
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-09-01 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강의 요약]
+경제학적 관점에서 효율적인 법과 제도는 무엇인지 분석해봅니다.
+ 
+[교수진 소개]
+연세대학교 상경대학 경제학부 한순구 교수
+ 
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 58 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/전문7_03_450x300_00000.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/2/">
+                                            시사이슈
+                                        </div>
+                                        <div class="course-name" title="[한국의 경제와 기업경영 이슈들] 3. 법경제학">
+                                            [한국의 경제와 기업경영 이슈들] 3. 법경제학
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-09-01 ~ 2022-02-28">
+                                            2021-09-01 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                        </div>
+                    </div>    
+                </div>                   
+            </div>
+            <div class="login-container">
+                <div class="course-latest">
+                    <div class="latest-header">                        
+                        <h3 class="latest-title">
+                            국제과정
+                        </h3>
+                        <div class="course-button-box">
+                            <span class="contents_count">총 <span class="total-count">4</span>개</span>
+                        </div>
+                    </div>
+                    <div class="latest-lists">
+                        <div class="search-course-list">
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=206647&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                이기준
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-10-22 ~ 2022-01-22</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Yonsei international mini-residency for advanced orthodontics is a week-long program that covers most up-to-date clinical orthodontics. This program is featured by didactic lectures, hands-on courses including lingual orthodontics and miniscrew placement. Chairside clinical observation and intensive case review are also included. The dates are from Jul7th to Jul 15th, 2022, at Yonsei University. You can make friends with interenational orthodontists coming from all over the world. Refer to the email: orthbs@yuhs.ac and do not miss the chance.
+program organizer: Pf. Kee-Joon Lee, DDS, PhD
+Department of Orthodontics, College of Dentistry, Yonsei University
+   
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 3 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/캡처.JPG' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/6/">
+                                            치과대학 국제과정
+                                        </div>
+                                        <div class="course-name" title="YONSEI International Mini Residency for advanced orthodontics (Trailer)">
+                                            YONSEI International Mini Residency for advanced orthodontics (Trailer)
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-10-22 ~ 2022-01-22">
+                                            2021-10-22 ~ 2022-01-22
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197425&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                글로벌사회공헌원
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-06-28 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     GEEF 2021, as the cornerstone for fulfilling the mission and vision of Sustainable Development Goals(SDGs), is organized under the theme of “3Ps(Peace, Prosperityand Partnership) Beyond Security,” focusing on the need for facilitating global partnerships, multilatealism and sustainable development.
+ 
+  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 41 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/GEEF 2021 Global (2).png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/1/2/3/8/9/">
+                                            Yonsei SDGs (Sustainable Development Goals)
+                                        </div>
+                                        <div class="course-name" title="[SDGs] Global Engagement &amp; Empowerment Forum(GEEF) 2021">
+                                            [SDGs] Global Engagement &amp; Empowerment Forum(GEEF) 2021
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-06-28 ~ 2022-02-28">
+                                            2021-06-28 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197424&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                글로벌사회공헌원
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-06-28 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     The course is designed for people that want to learn about the latest development agenda the international community agreed to achieve by 2030. Structured around the five pillars of Agenda 2030 – people, prosperity, planet, peace and justice, and partnership, students will learn that these pillars are interconnected and need to be integrated in practical policy-making and operational activities for development, in both developed and developing country settings.
+Following an introductory module on the main concepts of Agenda 2030 and the SDGs, successive modules will provide the foundation behind the SDGs for people, prosperity and planet, peace and partnership. A final module will explore the way forward and provide channels that the young generation can participate to integrate the SDGs in the policy-making of the students’ resident countries.
+To get a better idea of our course, we welcome you to take a look at our promotional video: 
+ 
+   
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 13 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/Coursera Thumbnail.png' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/1/2/3/8/9/">
+                                            Yonsei SDGs (Sustainable Development Goals)
+                                        </div>
+                                        <div class="course-name" title="[SDGs] Sustainable Development in the 21st Century with Ban Ki-moon">
+                                            [SDGs] Sustainable Development in the 21st Century with Ban Ki-moon
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-06-28 ~ 2022-02-28">
+                                            2021-06-28 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/view.php?id=197357&amp;group=1&amp;returnurl=aHR0cHM6Ly93d3cubGVhcm51cy5vcmcvc2VhcmNoLnBocD9rZXl3b3JkPUFJJmVucm9sX3N0YXJ0PSZlbnJvbF9lbmQ9JnN0dWR5X3N0YXJ0PSZzdHVkeV9lbmQ9Jmxhbmc9a28=" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">교수자/개설자</p>
+                                            <p class="txt">
+                                                장대련
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">학습기간</p>
+                                            <p class="txt">2021-06-28 ~ 2022-02-28</p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     This course will provide learners with a fundamental understanding of the characteristics and marketing strategies related to two key global industries, sports and entertainment. The growth in both industries have been fueled by their ability to innovate via CCCI, i.e. cross-country and cross-industry expansion. There will be a graded quiz that will consists of 10 questions during the first two weeks (together worth 50% of the grade) and a final quiz that contains 20 questions (worth 50% of the grade) in the third week.
+People who successfully complete this course will obtain the following outcomes: (1) You will learn the key characteristics of sports marketing. (2) You will learn the key characteristics of entertainment marketing. (3) You will be able to apply cross country growth strategies to your business in the sports and entertainment industry. (4) You will be able to apply cross industry growth strategies to your business in the sports and entertainment industry”. (5) You will be able to reference CCCI, i.e. cross-country and cross-industry Innovation best practices via interviews with key experts in the sports and entertainment industry such as from adidas, Audi, and YG Entertainment (home to Psy and Gangnam Style).
+ 
+Professor Dae Ryun Chang from Marketing Department at Yonsei School of Business
+Professor Sunmee Choi from Service Management Department at Yonsei School of Business
+Contact ICTL(ictl@yonsei.ac.kr) for related inquiries
+  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="txt-box">
+                                            <p class="title">참여자수</p>
+                                            <p class="txt">
+                                                 11 
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        
+                                        <img src="{% static 'learnus/assets/img/15_International Entertainment and Sports Marketing.jpg' %}" class="image" alt="" />
+
+
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-category" title="/1/2/9/">
+                                            G-MOOC
+                                        </div>
+                                        <div class="course-name" title="International Entertainment and Sports Marketing">
+                                            International Entertainment and Sports Marketing
+                                        </div>
+                                        <div class="course-icon">
+                                            <span class=""></span>
+                                            <span class=""></span>
+                                            <span class="on"></span>
+                                        </div>
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period-label">
+                                            모집중
+                                        </div>
+                                        <div class="course-period" title="2021-06-28 ~ 2022-02-28">
+                                            2021-06-28 ~ 2022-02-28
+                                        </div>                                                                       
+                                    </div>
+                                </a> 
+                            </div>                                   
+                        </div>
+                    </div>    
+                </div>                   
+            </div>
+
+            <div class="login-container">
+                <div class="course-latest">
+                    <div class="latest-header">                        
+                        <h3 class="latest-title">                            
+                            공개과정
+                        </h3>  
+                        <div class="course-button-box">
+                            <span class="contents_count">총 <span class="total-count">36</span>개</span>
+                            <a href="https://www.learnus.org/local/ubonline/open.php?keyword=AI&amp;enrol_start=&amp;enrol_end=&amp;study_start=&amp;study_end=&amp;lang=ko" class="btn btn-primary btn-search-more">더보기</a>
+                        </div>                      
+                    </div>
+                    <div class="latest-lists">
+                        <div class="search-course-list">
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=147" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+코로나19 극복 후 한국경제의 과제
+&amp;nbsp;
+[교수자소개]
+연세대학교 상경대학 경제학부 정진욱 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/c5a1a432e6601bdc135f39c35b7b9166.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] 코로나19 극복 후 한국경제의 과제">
+                                            [데일리 포커스] 코로나19 극복 후 한국경제의 과제
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 13회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=146" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+메타버스 시대의 예술
+&amp;nbsp;
+[교수자소개]
+연세대학교 커뮤니케이션대학원 서현석 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/4c2977d11ec702e6cc6d01874dd9e464.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] 메타버스 시대의 예술">
+                                            [데일리 포커스] 메타버스 시대의 예술
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 47회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=145" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+나의 삶은 SMiLE?
+&amp;nbsp;
+[교수자소개]
+연세대학교 사회복지대학원 남석인 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/8ed05143f54d6208484e2df2060f63af.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] 나의 삶은 SMiLE?">
+                                            [데일리 포커스] 나의 삶은 SMiLE?
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 478회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=144" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+그린 뉴딜 현황과 과제
+&amp;nbsp;
+[교수자소개]
+연세대학교 사회과학대학 정치외교학과 이태동 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/809d2f766b03b3cae4df55137688af96.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] 그린 뉴딜 현황과 과제">
+                                            [데일리 포커스] 그린 뉴딜 현황과 과제
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 34회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=143" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+중입자
+&amp;nbsp;
+[교수자소개]
+연세대학교 의과대학 방사선종양학교실 김진성 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/4b9a252c7fba59d288f20d0b33ee06bd.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] 중입자">
+                                            [데일리 포커스] 중입자
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 41회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=141" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+UX 경영 전략
+&amp;nbsp;
+[교수자소개]
+연세대학교 정보대학원 최준호 교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/531b231f2cadcc8abc6af991cac10bde.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] UX 경영 전략">
+                                            [데일리 포커스] UX 경영 전략
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 78회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=140" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     [강좌 요약]
+한국정치학회 학술상 및 ICAS 한국어 우수 학술도서상을 수상한 이 저서는 6.25 전쟁에 관한 학문적, 대중적 이해에 기여할 수 있음.&amp;nbsp;
+&amp;nbsp;
+[교수자 소개]
+연세대학교 정치외교학과&amp;nbsp; 김명섭 교수
+&amp;nbsp;
+문의 : 연세대학교 교무처 교수학습혁신센터 (ictl@yonsei.ac.kr)  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/6725529038abe381e74d2a0a864c8d3a.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="전쟁과 평화 저서 소개">
+                                            전쟁과 평화 저서 소개
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 212회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="search-course">
+                                <a href="https://www.learnus.org/local/ubonline/open_view.php?id=138" >
+                                    <div class="course-popup">
+                                        <div class="txt-box">
+                                            <p class="title">강좌소개</p>
+                                            <p class="txt txt-con">
+                                                <span class="ellip">
+                                                     Daily Focus Program은 요일/주제별로 최근 시사나 사회적 이슈에 대한 검증된 정보나 전문지식을 짧은 콘텐츠로 전달하는 프로그램입니다.
+&amp;nbsp;
+[강좌명]
+International students in Korea: Contributions and challenges
+&amp;nbsp;
+[교수자소개]
+연세대학교 언더우드학부 레니문&amp;nbsp;교수  
+                                                     
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="course-image">
+                                        <img src="{% static 'learnus/assets/img/f4ae7e73342234e984bdb40d9e71c7c1.png' %}" class="image"> 
+                                    </div>
+                                    <div class="course-body">
+                                        <div class="course-name" title="[데일리 포커스] International students in Korea: Contributions and challenges">
+                                            [데일리 포커스] International students in Korea: Contributions and challenges
+                                        </div>                                        
+                                    </div>
+                                    <div class="course-footer">
+                                        <div class="course-period">
+                                            조회수 70회
+                                        </div>                               
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>                
+            </div>
+
+
+		</div>   
+        <div id="page-userinfo" class="container-fluid">
+    <div class="row row-userinfo">
+        <div class="col-3 col-tab">
+            <div class="nav flex-column nav-pills">
+
+                <a href="#tab-my" class="nav-link nav-link-my active" data-toggle="pill" aria-selected="true" title="My" data-type="my" role="tab">
+                    My
+                </a>
+
+                <a href="#tab-noti" class="nav-link nav-link-noti" data-toggle="pill" aria-selected="false" title="알림"  data-type="noti" role="tab">
+                    알림
+                </a>
+
+                <a href="#" class="nav-link nav-link-close" title="close" role="pill" aria-selected="false">
+                    <i class="fa fa-close"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-9 col-tab-content">
+            <div class="tab-content">
+                <div id="tab-my" class="tab-pane active">
+                    <div class="div-scrollbar" data-mcs-theme="coursemos">
+                        <div class="tab-content-container mCustomScrollbar">
+                            <div class="p-3">
+                                <div class="spinner-border spinner-border-sm" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-noti" class="tab-pane">
+                    <div class="div-scrollbar" data-mcs-theme="coursemos">
+                        <div class="tab-content-container mCustomScrollbar">
+                            <div class="p-3">
+                                <div class="spinner-border spinner-border-sm" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>     
+    </div>
+    
+	<div id="page-footer">
+        <div class="footer-top">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p class="footer-title" onclick="window.open('{% static 'learnus/assets/js/privacy.jsp' %}')">
+                개인정보처리방침
+            </p>
+            <p class="footer-title" onclick="location.href='/html/refund/'">
+                취소/환불 정책
+            </p>
+            <div class="footer-txt">
+                <p class="address">03722 서울특별시 서대문구 연세로 50 연세대학교 <br/>신촌ㆍ국제/미래 : 1599-1885</p>
+                <p class="footer_business_info">대표자 : 서승환  |  사업자등록번호 : 110-82-00282 <br/>통신판매업신고 : 제2015-서울서대문-0380호</p>
+                <p class="copyright">
+                    
+                    COPYRIGHT© 2021 YONSEI UNIV. ALL RIGHTS RESERVED.
+                </p>
+            </div>            
+        </div>
+        <div class="footer-cscenter">
+            <p class="footer-title">LearnUs 사용문의</p>
+            <div class="footer-txt">
+                <p class="num">02-2123-4201 ~ 4205</p>
+                <p class="cs_info">평일 09:00 ~ 17:20 (점심시간 12:00 ~ 13:00) <br/>토,일요일 및 공휴일은 쉽니다.</p>
+                <p class="cs_link"><a class="cs_mail">E-mail : learnus@yonsei.ac.kr</a> <a href="/mod/ubboard/view.php?id=2009296" class="cs_qna">Q&A</a><p>
+            </div>
+        </div>        
+        <div class="footer-link">
+            <div class="footer-link-box">
+                <p class="footer-title">LearnUs 소개</p>
+                <div class="footer-link-txt">                
+                    <a href="/html/intro/learnus/index.php">LearnUs 의미</a>              
+                    <a href="/html/intro/learnus/greeting.php">인사말</a>                         
+                    <a href="/html/intro/learnus/value.php">핵심가치</a>
+                    <a href="/html/intro/learnus/logo.php">로고디자인</a>  
+                    <a href="/html/intro/learnus/curriculum.php">교육과정</a>
+                </div>
+            </div>
+            <div class="footer-link-box">
+                <p class="footer-title">홍보</p>
+                <div class="footer-link-txt">                
+                    <a href="/mod/ubboard/view.php?id=2323883">보도자료</a>             
+                    <a href="/mod/ubboard/view.php?id=2323884">광고</a>               
+                    <a href="/html/intro/promotion/sns.php">SNS</a>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    <div class="footer-container">
+        <div class="footer-sns">
+            <a href="https://www.facebook.com/profile.php?id=100067241113123" target="_blank">facebook</a>
+            <a href="https://www.instagram.com/learnus_official/" target="_blank">instagram</a>
+            <a href="https://blog.naver.com/learnus_official" target="_blank">blog</a>
+            <a href="https://www.youtube.com/channel/UCcFq42FzJQr_IyJ5Htt96ng" target="_blank"></a>
+        </div>
+        <div class="family-sites">
+            <div class="btn-group dropup">
+                <button type="button" class="btn dropdown-toggle btn-family" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Family Site
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="https://www.yonsei.ac.kr" class="dropdown-item" target="_blank">연세대학교</a>
+                    <a href="https://portal.yonsei.ac.kr" class="dropdown-item" target="_blank">연세포탈</a>
+                    <a href="http://ictl.yonsei.ac.kr/r" class="dropdown-item" target="_blank">교수학습혁신센터</a>
+                    <a href="https://library.yonsei.ac.kr/" class="dropdown-item" target="_blank">학술정보원(도서관)</a>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="back-top">
+	<a href="#top"><span></span></a>
+</div>
+<div id="ajax_loading_submit">&nbsp;</div>
+<div id="ajax_loading_container">
+	<div id="ajax_loading_submit_img">
+		<img src="{% static 'learnus/assets/img/bb77305b4d5fad08572805b7104c3917.png' %}" alt="loading..." /> Loading...
+	</div>
+	<div id="ajax_loading_message">
+		<p class="save_msg">데이터를 저장하고 있습니다. 잠시만 기다려주십시오.</p>
+		<p class="refresh_msg">장시간 페이지 로딩 중이면 새로고침(F5) 해주시기 바랍니다.</p>
+	</div>
+</div>
+
+<div class="modal hidden" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+	</div>
+
+</div></div>
+<script type="text/javascript" src="{% static 'learnus/assets/js/addExtBtn.js' %}"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M9Z4NCPPY6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M9Z4NCPPY6');
+</script><script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://www.learnus.org/lib/requirejs.php/1636445794/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://www.learnus.org/lib/javascript.php/1636445794/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://www.learnus.org/lib/javascript.php/1636445794/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://www.learnus.org/lib/javascript.php/1636445794/lib/requirejs/jquery-private',
+        iziModal: 'https://www.learnus.org/lib/javascript.php/1636445794/lib/jquery/iziModal',
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      // #coursemos
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="{% static 'learnus/assets/js/require.min.js' %}"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://www.learnus.org/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("ko",{
+ "Play": "재생",
+ "Pause": "일시중지",
+ "Current Time": "현재 시간",
+ "Duration Time": "지정 기간",
+ "Remaining Time": "남은 시간",
+ "Stream Type": "스트리밍 유형",
+ "LIVE": "라이브",
+ "Loaded": "로드됨",
+ "Progress": "진행",
+ "Fullscreen": "전체 화면",
+ "Non-Fullscreen": "전체 화면 해제",
+ "Mute": "음소거",
+ "Unmute": "음소거 해제",
+ "Playback Rate": "재생 비율",
+ "Subtitles": "서브타이틀",
+ "subtitles off": "서브타이틀 끄기",
+ "Captions": "자막",
+ "captions off": "자막 끄기",
+ "Chapters": "챕터",
+ "You aborted the media playback": "비디오 재생을 취소했습니다.",
+ "A network error caused the media download to fail part-way.": "네트워크 오류로 인하여 비디오 일부를 다운로드하지 못 했습니다.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "비디오를 로드할 수 없습니다. 서버 혹은 네트워크 오류 때문이거나 지원되지 않는 형식 때문일 수 있습니다.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "비디오 재생이 취소됐습니다. 비디오가 손상되었거나 비디오가 사용하는 기능을 브라우저에서 지원하지 않는 것 같습니다.",
+ "No compatible source was found for this media.": "비디오에 호환되지 않는 소스가 있습니다."
+});
+
+    });
+});;
+M.util.js_pending('theme_coursemosv2/index');
+require(['theme_coursemosv2/index'], function(amd) {
+    amd.login(true, "https:\/\/nid.naver.com\/oauth2.0\/authorize?client_id=jR210zmuUhSWNUxTqqTF&redirect_uri=https:\/\/www.learnus.org\/auth\/naversign\/nidlogincallback.php&state=naversign&response_type=code");
+    M.util.js_complete('theme_coursemosv2/index');
+});;
+M.util.js_pending('theme_coursemosv2/index');
+require(['theme_coursemosv2/index'], function(amd) {
+    amd.search();
+    M.util.js_complete('theme_coursemosv2/index');
+});;
+M.util.js_pending('core/notification');
+require(['core/notification'], function(amd) {
+    amd.init(1, []);
+    M.util.js_complete('core/notification');
+});;
+M.util.js_pending('core/log');
+require(['core/log'], function(amd) {
+    amd.setConfig({"level":"warn"});
+    M.util.js_complete('core/log');
+});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script type="text/javascript" src="{% static 'learnus/assets/js/footer.js' %}"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"\ucd5c\uc885 \uc218\uc815 \uc77c\uc2dc","name":"\uc81c\ubaa9","error":"\uc624\ub958","info":"\uc815\ubcf4","yes":"\uc608","no":"\uc544\ub2c8\uc624","cancel":"\ucde8\uc18c","confirm":"\ud655\uc778","areyousure":"\uacc4\uc18d\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?","closebuttontitle":"\ub2eb\uae30","unknownerror":"\uc54c \uc218 \uc5c6\ub294 \uc624\ub958"},"repository":{"type":"\uc720\ud615","size":"\ud06c\uae30","invalidjson":"\uc798\ubabb\ub41c JSON \ubb38\uc790\uc5f4","nofilesattached":"\ucca8\ubd80\ubb3c \uc5c6\uc74c","filepicker":"\ud30c\uc77c \uc120\ud0dd\ub3c4\uad6c","logout":"\ub098\uac00\uae30","nofilesavailable":"\uc4f8 \uc218 \uc788\ub294 \ud30c\uc77c\uc774 \uc5c6\uc74c","norepositoriesavailable":"\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ud604\uc7ac \uc800\uc7a5\uc18c\uc911\uc5d0\uc11c \ud544\uc694\ud55c \ud3ec\ub9f7\uc73c\ub85c \ud30c\uc77c\uc744 \ubcf4\ub0b4\uc8fc\ub294 \uc800\uc7a5\uc18c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.","fileexistsdialogheader":"\ud30c\uc77c\uc774 \uc874\uc7ac\ud569\ub2c8\ub2e4.","fileexistsdialog_editor":"\uac19\uc740 \uc774\ub984\uc758 \ud30c\uc77c\uc774 \ud3b8\uc9d1\ud558\uace0 \uc788\ub294 \ubb38\uc7a5\uc5d0 \uc774\ubbf8 \ucca8\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4.","fileexistsdialog_filemanager":"\uac19\uc740 \uc774\ub984\uc758 \ud30c\uc77c\uc774 \uc774\ubbf8 \ucca8\ubd80\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4.","renameto":"\"{$a}\"\ub85c \uc774\ub984 \ubcc0\uacbd","referencesexist":"\uc774\ud30c\uc77c\uc744 \uc18c\uc2a4\ub85c \uc0ac\uc6a9\ud558\ub294 {$a} \ubcc4\uce6d \/ \ubc14\ub85c\uac00\uae30 \ud30c\uc77c\uc774 \uc788\uc2b5\ub2c8\ub2e4.","select":"\uc120\ud0dd"},"admin":{"confirmdeletecomments":"\uc120\ud0dd\ud55c \ub313\uae00\uc744 \uc0ad\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?","confirmation":"\ud655\uc778"},"local_ubion":{"required_input_idnumber":"\ud559\ubc88\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694."}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"ko"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random619244da48b7f2'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random619244da48b7f2'); });
+})();
+//]]>
+</script>
+</body>
+</html>

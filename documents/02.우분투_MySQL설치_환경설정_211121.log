@@ -1,0 +1,61 @@
+-- mysql을 설치한다
+$ sudo apt-get update
+$ sudo apt-get install mysql-server
+
+-- 방화벽 상태를 확인하여 비활성 상태인 경우 활성화 시켜 놓는다
+$ sudo ufw status
+$ sudo ufw enable
+
+-- MySQL 서버 서비스를 활성화시켜 놓고 시작시킨다
+$ sudo systemctl enable mysql
+$ sudo systemctl restart mysql
+
+-- MySQL에서 사용되는 방화벽 포트를 열어 놓는다
+$ sudo ufw allow 3306/tcp
+
+-- MySQL 접속 테스트
+$ sudo mysql -u root -p
+mysql>
+
+-- MySQL 기본 명령어
+mysql> show databases;
+mysql> use mysql;
+mysql> show tables;
+mysql> desc user;
+mysql> select user, host from user;
+
+-- MySQL 버전 확인하기
+mysql> show variables like "%version%";
+
+-- 'chagaun' 데이터베이스 생성
+mysql> create database chagaun default character set utf8;
+mysql> drop database chagaun;
+
+-- 데이터베이스를 컨토롤할 'chagaun_user' User를 생성한다
+mysql> CREATE USER 'chagaun_user'@'%' IDENTIFIED BY 'chagaun4!!';
+mysql> ALTER USER 'chagaun_user'@'%' IDENTIFIED WITH mysql_native_password BY 'chagaun4!!';
+
+-- 'chagaun'이라는 데이터베이스 모든 오브젝트들의 권한을 'chagaun_user'라는 유저에세 부여
+mysql> GRANT ALL privileges ON chagaun.* TO 'chagaun_user'@'%' IDENTIFIED BY 'chagaun';
+
+-- 위에서 변경된 내용을 메모리에 즉시 반영
+mysql> flush privileges;
+
+-- 기존 접속을 해제한 후 새로 생성한 유저로 접속을 해본다.
+mysql> exit
+$ mysql -h chagaun.net -u chagaun_user -p
+
+-- 접속이 안되는 경우 아이피가 로컬로만 접속이 되도록 설정이 되어 있는 경우가 있다
+-- $ netstat -nltp를 통해 확인할 수 있다(3306 포트의 LISTEN이 로컬상태에서만 대기를 하고 있는 경우임)
+-- /etc/mysql/mysql.conf.d/mysqld.cnf 파일에서 아래처럼 변경한다
+:
+# bind-address = 127.0.0.1을 주석처리하고
+bind-address = 0.0.0.0을 추가한다.
+
+--MySQL를 재시작한다
+$ sudo systemctl restart mysql
+
+-- 마지막으로 HeidiSQL이라는 툴을 윈도우에 설치하여 위에서 설치한 데이터베이스에 접속
+https://www.heidisql.com/download.php
+
+

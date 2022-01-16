@@ -1,0 +1,73 @@
+<div class="subdepth">
+	<div class="wrap">
+		<div class="bgn bgn{{ my_sub_category.full_code| slice:":2" |floatformat:"0" }}">
+{% for category in my_sub_categorys %}
+{% if category.link != ""  %}
+			<span><a {% if category.full_code == my_sub_category.full_code %} class='on' {% endif %} href="{{ category.link }}" target="_blank">{{ category.name }}</a></span>
+{% else %}
+			<span><a {% if category.full_code == my_sub_category.full_code %} class='on' {% endif %} href="{{ category.path }}">{{ category.name }}</a></span>
+{% endif %}
+{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+<div id="mobile_sub_nav" class="mobile_sub_nav">
+	<ul>
+		<li class="home">
+			<a href="/"></a>
+		</li>
+		<li class='nav_gnb'>
+			{{ my_main_category.name }}
+		</li>
+		<li class="snb_area">
+			<nav id="snb_menu" >
+				<div class="select" onclick="menu_toggle('select_open');">
+					<p class="menu_item">
+						{{ my_sub_category.name }}
+					</p>
+				</div>
+				<!-- select open -->
+				<div id="select_open">
+					<ul class="open">
+						<ul class="sub_menu sub1" >
+{% for category in my_sub_categorys %}
+{% if category.link != ""  %}
+							<li><a {% if category.full_code == my_sub_category.full_code %} class='on' {% endif %} href="{{ category.link }}" target="_blank">{{ category.name }}</a></li>
+{% else %}
+							<li><a {% if category.full_code == my_sub_category.full_code %} class='on' {% endif %} href="{{ category.path }}">{{ category.name }}</a></li>
+{% endif %}
+{% endfor %}
+						</ul>
+
+					</ul>
+				</div>
+			</nav>
+		</li>
+	</ul>
+</div>
+
+<script>
+	$(".depth li a").click(function (){
+		$(".depth li a").addClass("on");
+	});
+</script>
+
+<script>
+function menu_toggle(layer) {
+	$("#" + layer).slideToggle(0);
+}
+function menu_up(layer) {
+	$("#" + layer).slideUp(0);
+}
+$(".snb_menu").click(function() {
+	var
+		text = $(this).text();
+	$(".sh_value").val(value);
+	$(".menu_item").val(text);
+	$("#select_open").slideUp(0);
+	shop_list(1);
+});
+
+</script>

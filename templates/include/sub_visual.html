@@ -1,0 +1,20 @@
+{% load static %}
+<section class="sub_visual">
+	<div class="sub_visual_dim">
+	</div>
+	<div class="visual_dot">
+	</div>
+	<div class="wrap">
+		<div class="text">
+			<p class="sub_txt wow fadeInUp" data-wow-duration="800ms" data-wow-delay="300ms">
+				<span>CHAGAUN AI MARKETING</span>
+			</p>
+			<h2 class="wow fadeInUp" data-wow-duration="800ms" data-wow-delay="600ms">
+				{{ my_main_category.name }}
+			</h2>
+		</div>
+	</div>
+	<div class="visual_img">
+		<img alt="" src="{% static ""%}img/sub/sub_visual{{ my_main_category.code }}.jpg">
+	</div>
+</section>

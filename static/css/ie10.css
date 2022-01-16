@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+
+.tabs nav ul::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.tabs nav ul li{
+  float: left;
+  width: 25%;
+}
+.tabs.tab_2 nav ul li{
+  width: 50%;
+}
+.tabs-style-linemove nav li:last-child::before{
+  display: none;
+}
+@media screen and (max-width: 1200px){
+  .tabs nav ul li{
+    width: 50%;
+    margin: 0;
+  }
+  .tabs-style-linemove nav li.tab-current{
+    padding: 0;
+    height: 78px;
+  }
+  .tabs-style-linemove nav li.tab-current a{
+    border-top: 0;
+    box-sizing: content-box;
+    line-height: 2.4;
+    height: 48px;
+  }
+}

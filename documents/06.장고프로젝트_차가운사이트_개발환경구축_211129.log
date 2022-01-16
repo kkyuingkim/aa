@@ -1,0 +1,143 @@
+[장고프로젝트_차가운사이트 개발환경 만들기]
+-- 작업할 User(ysk002)로 우분투에 로그인한다.
+
+-- /home/ysk002 폴더에 chagaun_project라는 폴더를 만들고 해당 폴더로 이동한다.
+$ pwd
+/home/ysk002
+
+$ mkdir chagaun_project
+$ cd chagaun_project
+
+-- vnv_ysk002 라는 가상 환경을 만든 후 이 가상환경으로 들어간다
+$ python -m venv vnv_ysk002
+$ source ./vnv_ysk002/bin/activate
+
+-- chagaun_prj.tar 파일을 현재의 폴더에 다운로드 받아 압축을 푼다.
+(vnv_ysk002)$ tar -xvf chagaun_prj.tar
+(vnv_ysk002)$ ls
+chagaun_prj chagaun_prj.tar vnv_ysk002
+=> 이처럼 3개의 폴더 또는 파일이 있어야 한다.
+
+-- chagaun_prj 폴더로 이동한다.
+(vnv_ysk002)$ cd chagaun_prj
+
+-- 가상환경에 장고 패키지등 프로젝트에서 사용하고 있는 기본 패키지들을 설치한다.
+(vnv_ysk002)$ python -m pip install --upgrade pip
+(vnv_ysk002)$ pip install -r requirements.txt
+
+-- /etc/apache2/apache2.conf에 다음의 웹서비스 폴더를 등록해 놓는다
+<Directory /home/ysk002/chagaun_project/chagaun_prj/>
+	Options Indexes FollowSymLinks
+	AllowOverride None
+	Require all granted
+</Directory>
+
+-- /etc/apache2/ports.conf에 다음의 웹서비스 포트를 등록해 놓는다
+:
+Listen 8001
+
+-- /etc/apache2/sites-available/000-default.conf에 다음의 웹서비스 포트를 등록해 놓는다
+<VirtualHost *:8001>
+	ServerAdmin webmaster@localhost
+	DocumentRoot /ysk002/chagaun_project/chagaun_prj
+
+	ErrorLog /ysk002/chagaun_project/chagaun_prj/logs/error.log
+	CustomLog /ysk002/chagaun_project/chagaun_prj/logs/access.log combined
+
+	Alias /static /home/ysk002/chagaun_project/chagaun_prj/static
+	<Directory /home/ysk002/chagaun_project/chagaun_prj/static>
+			Require all granted
+	</Directory>
+	Alias /media /home/ysk002/chagaun_project/chagaun_prj/media
+	<Directory /home/ysk002/chagaun_project/chagaun_prj/media>
+			Require all granted
+	</Directory>
+
+	<Directory /home/ysk002/chagaun_project/chagaun_prj/chagaun_prj>
+			<Files wsgi.py>
+					Require all granted
+			</Files>
+	</Directory>
+	
+	WSGIDaemonProcess chagaun_prj python-home=/home/ysk002/chagaun_project/vnv_ysk002 python-path=/home/ysk002/chagaun_project/chagaun_prj
+	WSGIProcessGroup chagaun_prj
+	WSGIScriptAlias / /home/ysk002/chagaun_project/chagaun_prj/chagaun_prj/wsgi.py
+</VirtualHost>
+
+[MySQL 상에 데이터 베이스 만들기]
+-- 새로운 User와 이 User가 사용할 데이터 베이스를 생성하기 위해 MySQL을 루트 권한으로 접속 한다
+$ sudo mysql
+mysql>
+
+-- 데이터베이스를 컨토롤할 'ysk002_user' User를 생성한다
+mysql> CREATE USER 'ysk002_user'@'%' IDENTIFIED BY 'ysk002!!';
+mysql> ALTER USER 'ysk002_user'@'%' IDENTIFIED WITH mysql_native_password BY 'ysk002!!';
+
+-- 'ysk_database' 데이터베이스 생성
+mysql> create database ysk_database default character set utf8;
+
+-- 생성된 하나의 User는 여러 데이터베이스를 관리할 수 있다 
+-- 'ysk002_user'라는 유저에게 'ysk_database'이라는 데이터베이스에 만들어지는 모든 오브젝트들에 대한 사용 권한을 부여
+mysql> GRANT ALL privileges ON ysk_database.* TO 'ysk002_user'@'%' IDENTIFIED BY 'ysk002!!';
+
+-- 위에서 변경된 내용을 메모리에 즉시 반영
+mysql> flush privileges;
+
+-- 생성된 User를 확인하기 위해 system database인 mysql로 이동한 후 User 테이블을 조회해본다
+mysql> show databases;
+mysql> use mysql;
+mysql> select user, host from user;
+
+-- 기존 접속을 해제한 후 새로 생성한 유저로 접속을 해본다.
+mysql> exit
+$ mysql -u ysk002_user -p
+mysql>
+
+-- MySQL 기본 명령어를 실행해 본다
+mysql> show databases;
+mysql> use ysk_database;
+mysql> show tables;
+
+-- MySQL을 빠져 나온다
+mysql> exit
+
+-- 이제 chagaun_prj에서 위에서 생성한 데이터베이스와 연결하기 위해 다음 작업을 한다
+-- /home/ysk002/chagaun_project/chagaun_prj/chagaun_prj/settings.py에서 DATABASES 연결 부분을 수정한다.
+(vnv_ysk002)$ vi chagaun_prj/settings.py
+:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ysk_database',
+        'USER': 'ysk002_user',
+        'PASSWORD': 'ysk002!!',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+    }
+}
+=> 저장 후 빠저 나온다
+
+-- MySQL 데이터 베이스(ysk_database)에 chagaun_prj에 있는 ModelClass를 바탕으로 데이터베이스 스키마(테이블 등)를 생성한다
+(vnv_ysk002)$ python manage.py makemigrations
+(vnv_ysk002)$ python manage.py migrate
+
+-- HeidiSQL을 통해 위에서 생성한 데이터베이스를 연결한 후 
+-- home/ysk002/chagaun_project/chagaun_prj/documents/category_category.sql 파일을 로드하여 실행한다
+-- 그러면 ysk_database 데이터베이스의 categoruy_category 테이블에 메인메뉴 카테고리 데이터들이 수동으로 생성된다.
+
+-- 개발용 서버 실행하여 정상적으로 페이지가 뜨는지 확인한다
+(vnv_ysk002)$ python manage.py runserver 8001
+Starting development server at http://127.0.0.1:8001/
+
+-- 사이트 열기
+위의 서버 실행시 출력되는 사이트 주소를 Ctrl+Click를 눌러 웹사이트를 들어간다
+
+-- 다시 아래의 명령어를 실행하여 장고 관리자의 수퍼유저 만든다
+(vnv_ysk002)$ python manage.py createsuperuser
+
+-- 관리자 페이지 들어가 보기
+위에서 실행해본 웹사이트 뒤에 admin을 붙인 후 엔터를 치면 된다
+http://127.0.0.1:8001/admin
+
+
+

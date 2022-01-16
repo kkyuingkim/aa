@@ -1,0 +1,241 @@
+{% load static %}
+{% include "include/sitemap.html" %}
+
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+
+		$('.lnb').mouseenter(function(){
+			$("#header").addClass("hover");
+		})
+
+		$('#header').mouseleave(function(){
+			$("#header").removeClass("hover");
+		})
+
+	});
+</script>
+
+
+
+
+<section id="header_wrap" >
+	<header id="header" class="basic">
+
+		<h1>
+			<a href="/">
+				<img src="{% static "img/common/logo_w.png" %}" alt="차가운 AI 마케팅연구소" title="차가운 AI 마케팅연구소" class="logo_w"/>
+				<img src="{% static "img/common/logo.png" %}" alt="차가운 AI 마케팅연구소" title="차가운 AI 마케팅연구소" class="logo_c"/>
+			</a>
+		</h1>
+
+		<div class="gnb wrap">
+			{% if request.user.is_authenticated == False %}
+			<a href="/Member/Login">로그인</a>
+			<div class="line">|</div>
+			<a href="/Member/Agree">회원가입</a>
+			{% else %}
+			<a href="/Mypage">내정보</a>
+			<div class="line">|</div>
+			<a href="/Member/Logout">로그아웃</a>
+			{% endif %}
+			<a href="javascript:void(0);" class="go_layer sitemap">
+				<img src="{% static "img/common/sitemap_01.png" %}"/ class="sitemap_p">
+				<img src="{% static "img/common/sitemap_02.png" %}"/ class="sitemap_m">
+			</a>
+		</div>
+
+
+		<!-- lnbmenu -->
+		<nav class="lnb basic">
+			<ul>
+{% for main_category in main_categorys %}
+				<li class="lnb_1 lnb{{ main_category.code |floatformat:"0" }}">
+{% if main_category.link != "" %}	<a {% if main_category.full_code == my_main_category.full_code %} class='on' {% endif %} href="{{ main_category.path }}" target="_blank"><span>{{ main_category.name }}</span></a>
+{% else %}				<a {% if main_category.full_code == my_main_category.full_code %} class='on' {% endif %} href="{{ main_category.path }}"><span>{{ main_category.name }}</span></a>{% endif %}
+			<ul>
+{% for sub_category in sub_categorys %}
+                 	<li class="bgn bgn{{ sub_category.code| slice:":2" |floatformat:"0" }}">
+{% if sub_category.full_codes.0 == main_category.full_codes.0 and sub_category.name != "개인정보처리방침" %}
+{% if sub_category.link != ""  %}
+								<p><a href="{{ sub_category.link }}">{{ sub_category.name }}</a></p>
+{% else %}
+								<p><a href="{{ sub_category.path }}">{{ sub_category.name }}</a></p>
+{% endif %}
+{% endif %}
+					</li>
+{% endfor %}
+					</ul>
+				</li>
+{% endfor %}
+			</ul>
+		</nav>
+		<ul class="bg_navi basic">
+			<li class="bgn bgn1">
+				<p class="lnb_tit">텍스트</p>
+				<p class="lnb_img"><img src="{% static "img/common/nav_img1.jpg" %}" /> </p>
+				<p class="text"></p>
+			</li>
+			<li class="bgn bgn2">
+				<p class="lnb_tit">텍스트</p>
+				<p class="lnb_img"><img src="{% static "img/common/nav_img2.jpg" %}" /> </p>
+				<p class="text"></p>
+			</li>
+			<li class="bgn bgn3">
+				<p class="lnb_tit">텍스트</p>
+				<p class="lnb_img"><img src="{% static "img/common/nav_img3.jpg" %}" /> </p>
+				<p class="text"></p>
+			</li>
+			<li class="bgn bgn4">
+				<p class="lnb_tit">텍스트</p>
+				<p class="lnb_img"><img src="{% static "img/common/nav_img4.jpg" %}" /> </p>
+				<p class="text"></p>
+			</li>
+			<li class="bgn bgn5">
+				<p class="lnb_tit">텍스트</p>
+				<p class="lnb_img"><img src="{% static "img/common/nav_img5.jpg" %}" /> </p>
+				<p class="text"></p>
+			</li>
+		</ul>
+		<!-- //lnbmenu-->
+
+
+		<!-- mobile_lnbmenu-->
+				<nav class="mobile_lnb">
+					<img src="{% static "img/common/menu_icon_w.png" %}" class="menu_btn" alt="menu">
+					<img src="{% static "img/common/menu_icon.png" %}" class="menu_btn menu_btn_color" alt="menu">
+					<!-- lnbmenu -->
+					<div class="mobile_menu_area" >
+						<div class="my_menu">
+							<div class="menu_close">
+							<img src="{% static "img/common/btn_close.png" %}" alt="닫기"/>
+						</div>
+						<!-- 기본 -->
+						{% if request.user.is_authenticated == False %}
+						<div class="my_title">
+							<span><a href="javascript:void()"><i class="ico_myprofile"></i>로그인이 필요합니다.</a></span>
+						</div>
+						<div class="my_quick">
+							<ul>
+								<li>
+									<a href="/Member/Login">로그인</a>
+								</li>
+								<li>
+									<a href="/Member/Agree">회원가입</a>
+								</li>
+							</ul>
+						</div>
+						<!-- 로그인했을때-->
+						{% else %}
+						<div class="my_title">
+							<span><a href="javascript:void()"><i class="ico_myprofile"></i>{{ member.name }}님, 환영합니다!</a></span>
+						</div>
+						<div class="my_quick">
+							<ul>
+								<li>
+									<a href="/Mypage">내정보</a>
+								</li>
+								<li>
+									<a href="/Member/Logout">로그아웃</a>
+								</li>
+							</ul>
+						</div>
+						{% endif %}
+
+
+						<ul>
+							<li><h3><a href="/IdFunnel">아이디검증</a></h3></li>
+							<li><h3><a href="/ShopFinder">쇼핑솔루션</a></h3></li>
+							<li><h3><a href="/RpaTool">RPA솔루션</a></h3></li>
+							<li>
+								<h3 class="m_menu_title">다운로드</h3>
+								<ul class="m_menu_list">
+									<li><a href="/Download/RpaTool">클리커</a></li>
+									<li><a href="/Download/ShopFinder">쇼핑몰파인더</a></li>
+									<li><a href="/Download/SnsFinder">SNS파인더</a></li>
+									<li><a href="/Download/IdFunnel">아이디퍼널</a></li>
+								</ul>
+							</li>
+							<li>
+								<h3 class="m_menu_title">고객지원</h3>
+								<ul class="m_menu_list">
+									<li><a href="/Contact/Board">공지사항</a></li>
+									<li><a href="/Contact/Faq">도움말</a></li>
+									<li><a href="/Contact/Market">마케팅자료</a></li>
+								</ul>
+							</li>
+							<li>
+								<h3 class="m_menu_title">가이드</h3>
+								<ul class="m_menu_list">
+									<li><a href="/Guide/Company">회사소개</a></li>
+									<li><a href="/Guide/Terms">이용약관</a></li>
+									<li><a href="/Guide/Privacy">개인정보처리방침</a></li>
+									<li><a href="/Guide/Policy">운영정책</a></li>
+								</ul>
+							</li>
+						</ul>
+							<!-- <ul>
+								{% for main_category in main_categorys %}
+												<li>
+													<h3 class="m_menu_title">
+														<a href="{{ main_category.path }}">{{ main_category.name }}</a>
+														{{ main_category.name }}
+													</h3>
+													<ul class="m_menu_list">
+														{% for sub_category in sub_categorys %}
+														{% if sub_category.full_codes.0 == main_category.full_codes.0 and sub_category.name != "개인정보처리방침" %}
+														{% if sub_category.link != ""  %}
+														<li><a href="{{ sub_category.link }}">{{ sub_category.name }}</a></li>
+								{% else %}
+														<li><a href="{{ sub_category.path }}">{{ sub_category.name }}</a></li>
+								{% endif %}
+								{% endif %}
+								{% endfor %}
+													</ul>
+												</li>
+								{% endfor %}
+							</ul> -->
+						</div>
+
+
+					</div>
+					<!-- //lnbmenu-->
+
+				</nav>
+				<!--mobile_lnbmenu-->
+
+
+
+	</header>
+
+
+</section>
+<!-- //header -->
+
+<SCRIPT type="text/javascript">
+	$(window).load(function(){
+		$(".lnb").navigation();
+	});
+</SCRIPT>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".m_dep1").click(function (){
+		var vol = $(".m_dep1").index(this);
+		$(".m_dep2:eq("+vol+")").slideToggle('fast');
+		$(".m_dep2").not(":eq("+vol+")").slideUp('fast');
+	});
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".m_menu_title").click(function (){
+		var vol = $(".m_menu_title").index(this);
+		$(".m_menu_list:eq("+vol+")").slideToggle('slow');
+		$(".m_menu_list").not(":eq("+vol+")").slideUp('slow');
+	});
+});
+</script>

@@ -1,0 +1,136 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+
+<!-- content -->
+<section class="sub_container mypage">
+	<div class="wrap">
+		<div class="sub_contents">
+			{% include "include/sub_nav.html" %}
+			<div class="mypage_area">
+
+				{% include "include/title.html" %}
+
+				<div class="sub">
+					회원님께서 지금 사용하고 있는 아이디에 대한 비밀번호를 변경할 수 있습니다.<br>
+				</div>
+
+				<form id="pw_change_form">
+				<div class="modify">
+					<div class="join_form">
+						<dl class="email">
+							<dt>
+								이메일아이디
+							</dt>
+							<dd>
+								{{ user.username }}
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								기존비밀번호<span>*</span>
+							</dt>
+							<dd>
+								<input type="password" name="old_pass" required="required" placeholder="기존 비밀번호를 입력해주세요." title="기존 비밀번호를 입력해주세요."/>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								신규비밀번호<span>*</span>
+							</dt>
+							<dd>
+								<input type="password" name="new_pass" required="required" placeholder="신규 비밀번호를 입력해주세요." title="신규 비밀번호를 입력해주세요."/>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								비밀번호확인<span>*</span>
+							</dt>
+							<dd>
+								<input type="password" name="new_pass_confirm" required="required" placeholder="다시 한번 입력해주세요." title="다시 한번 입력해주세요." />
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								스마트폰 번호
+							</dt>
+							<dd>
+								{{ member.phone }}
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								이름(실명)
+							</dt>
+							<dd>
+								{{ member.name }}
+							</dd>
+						</dl>
+					</div>
+				</div>
+				</form>
+				<div class="btn_area">
+					<a href="javascript:void(0);" id="pw_change_form_submit" class="button btn01">확인</a>
+					<a href="javascript:history.back(-1);" class="button btn02">취소</a>
+				</div>
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+<script type="text/javascript" src="{% static "js/validate.js" %}"></script>
+<script>
+
+$(document).ready(function() {
+
+
+        $("#pw_change_form_submit").click(function(){
+
+            if(validate('#pw_change_form')==false) return;
+
+	    var form_data = $("#pw_change_form").serialize();
+
+            $.ajax({
+                type : "POST",
+                url : "/api/v1/pw/change",
+                cache : false,
+                data : form_data,
+                success: function(res) {
+		    if(res) {
+			if(res.ok == true) {
+			    alert(res.msg);
+			    location.replace('/Member/Logout');
+			} else {
+			    alert(res.msg);
+			}
+		    } else {
+			alert('예기치 않은 오류가 발생했습니다.');
+		    }
+                }
+            });
+        });
+});
+</script>
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}

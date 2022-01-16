@@ -1,0 +1,31 @@
+{% load static %}
+<!-- mobile page navigation -->
+<section class="m_page_navi wow fadeInDown animated">
+	<ul>
+		<li class="prv">
+			<dl>
+				<a href="{{ prev_category.path }}">
+					<dt>
+						<img src="{% static "img/sub/arrow_prv.png" %}">
+					</dt>
+					<dd>
+						{{ prev_category.name }}
+					</dd>
+				</a>
+			</dl>
+		</li>
+		<li class="nxt">
+			<dl>
+				<a href="{{ next_category.path }}">
+					<dt>
+						<img src="{% static "img/sub/arrow_nxt.png" %}">
+					</dt>
+					<dd>
+						{{ next_category.name }}
+					</dd>
+				</a>
+			</dl>
+		</li>
+	</ul>
+</section>
+<!-- mobile page navigation -->

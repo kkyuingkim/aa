@@ -1,0 +1,75 @@
+{% load static %}
+{% include "include/head.html" %}
+{% include "include/header_02.html" %}
+{% include "include/sub_visual.html" %}
+{% include "include/sub_nav.html" %}
+
+
+<!-- content -->
+<section class="sub_container" >
+	<div class="wrap">
+		{% include "include/title.html" %}
+		<div class="sub_contents">	
+
+			<div class="guide">
+
+				<div id="guide_tab" class="guide_tab mab50">
+					<ul>
+			  		<li class="on"><a onclick="show_tab(0);"><p>제 1장 총칙</p></a></li>
+			  		<li class=""><a onclick="show_tab(1);"><p>제2장 서비스 이용계약</p></a></li>
+						<li class=""><a onclick="show_tab(2);"><p>제3장 서비스 이용</p></a></li>
+						<li class=""><a onclick="show_tab(3);"><p>제4장 계약당사자의 의무</p></a></li>
+						<li class=""><a onclick="show_tab(4);"><p>제5장 계약해지 및 이용제한</p></a></li>
+						<li class=""><a onclick="show_tab(5);"><p>제6장 손해배상 등</p></a></li>
+					</ul>
+				</div>
+
+				<div class="list_tab_con">
+				  <div id="guide_tab_con0" style="display:; height:100%; overflow:hidden;">
+						{% include "guide/terms/terms01.html" %}
+				  </div>
+				  <div id="guide_tab_con1" style="height:0; overflow:hidden;">
+						{% include "guide/terms/terms02.html" %}
+				  </div>
+				  <div id="guide_tab_con2" style="height:0; overflow:hidden;">
+						{% include "guide/terms/terms03.html" %}
+				  </div>
+					<div id="guide_tab_con3" style="height:0; overflow:hidden;">
+						{% include "guide/terms/terms04.html" %}
+				  </div>
+					<div id="guide_tab_con4" style="height:0; overflow:hidden;">
+						{% include "guide/terms/terms05.html" %}
+				  </div>
+					<div id="guide_tab_con5" style="height:0; overflow:hidden;">
+						{% include "guide/terms/terms06.html" %}
+				  </div>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+</section>
+<!-- //content -->
+
+
+{% include "include/footer.html" %}
+{% include "include/foot.html" %}
+
+
+<script>
+function show_tab(tabnum){
+var i;
+var tm = document.getElementById("guide_tab").getElementsByTagName("li");
+var len = tm.length;
+var d = new Array(len);
+for(i=0; i<len; i++){
+d[i] = document.getElementById("guide_tab_con"+i);
+d[i].style.height = (tabnum==i)?"100%":"0px";
+tm[i].className = (tabnum==i)?"on":"";
+};
+};
+</script>
